@@ -49,7 +49,7 @@
             </a>
 
             <button 
-                onclick="kirimWA('Konsultasi Gratis dari Tombol Hero')"
+                onclick="kirimWA('Umum Produk AFC')"
                 class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2"
             >
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -473,7 +473,7 @@
 
             <div class="text-center">
                 <button 
-                    onclick="kirimWA('Konsultasi dan Pembelian Produk')"
+                    onclick="kirimWA('Umum Produk AFC')"
                     class="inline-block bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:-translate-y-1 text-base md:text-lg"
                 >
                     💬 Hubungi Kami
@@ -541,6 +541,126 @@
         </div>
     </section>
 
+    <section class="max-w-6xl mx-auto px-6 py-12">
+        <div class="text-center mb-10">
+            <span class="bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Jaminan Kualitas & Keamanan</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3 uppercase tracking-tight">
+                Safety Certificate
+            </h2>
+            <p class="text-slate-600 text-sm md:text-base mt-3 max-w-3xl mx-auto leading-relaxed">
+                Semua produk kita memiliki Sertifikat Bebas Antibiotik, Pestisida, Logam Berat, Kimia Berbahaya, Hormon, dan Bebas Pencemaran Radiasi Nuklir.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div onclick="bukaSertifikat('sertif-organic.png')" class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition text-center flex flex-col items-center justify-center cursor-pointer group">
+                <div class="flex justify-center mb-5 relative">
+                    <img src="sertif-organic.png" alt="Sertifikat Organik" class="w-28 h-28 object-contain drop-shadow-sm group-hover:scale-105 transition transform duration-300">
+                    <div class="absolute inset-0 bg-white/60 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-3xl">🔍</span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-slate-900 text-base md:text-lg">Sertifikat Organik</h3>
+                <p class="text-xs text-blue-600 font-semibold mt-2 opacity-0 group-hover:opacity-100 transition">Klik untuk perbesar</p>
+            </div>
+
+            <div onclick="bukaSertifikat('sertif-hormone-free.png')" class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition text-center flex flex-col items-center justify-center cursor-pointer group">
+                <div class="flex justify-center mb-5 relative">
+                    <img src="sertif-hormone-free.png" alt="Sertifikat Bebas Hormon" class="w-28 h-28 object-contain drop-shadow-sm group-hover:scale-105 transition transform duration-300">
+                    <div class="absolute inset-0 bg-white/60 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-3xl">🔍</span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-slate-900 text-base md:text-lg">Sertifikat Bebas Hormon</h3>
+                <p class="text-xs text-blue-600 font-semibold mt-2 opacity-0 group-hover:opacity-100 transition">Klik untuk perbesar</p>
+            </div>
+
+            <div onclick="bukaSertifikat('sertif-free-sales.png')" class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition text-center flex flex-col items-center justify-center cursor-pointer group">
+                <div class="flex justify-center mb-5 relative">
+                    <img src="sertif-free-sales.png" alt="Sertifikat Free Sales" class="w-28 h-28 object-contain drop-shadow-sm group-hover:scale-105 transition transform duration-300">
+                    <div class="absolute inset-0 bg-white/60 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-3xl">🔍</span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-slate-900 text-base md:text-lg">Sertifikat Free Sales</h3>
+                <p class="text-xs text-blue-600 font-semibold mt-2 opacity-0 group-hover:opacity-100 transition">Klik untuk perbesar</p>
+            </div>
+
+            <div onclick="bukaSertifikat('sertif-free-radiation.png')" class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition text-center flex flex-col items-center justify-center cursor-pointer group">
+                <div class="flex justify-center mb-5 relative">
+                    <img src="sertif-free-radiation.png" alt="Sertifikat Bebas Radiasi Nuklir" class="w-28 h-28 object-contain drop-shadow-sm group-hover:scale-105 transition transform duration-300">
+                    <div class="absolute inset-0 bg-white/60 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-3xl">🔍</span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-slate-900 text-base md:text-lg">Sertifikat Bebas Radiasi Nuklir</h3>
+                <p class="text-xs text-blue-600 font-semibold mt-2 opacity-0 group-hover:opacity-100 transition">Klik untuk perbesar</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="modal-sertifikat" class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-sm flex justify-center items-center p-4 transition-opacity" onclick="tutupSertifikat()">
+        <span class="absolute top-6 right-8 text-white text-5xl font-bold cursor-pointer hover:text-red-500 transition">&times;</span>
+        <img id="gambar-besar" src="" alt="Sertifikat Zoom" class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl" onclick="event.stopPropagation()">
+    </div>
+
+    <section class="max-w-4xl mx-auto px-6 py-12">
+        <div class="text-center mb-10">
+            <span class="bg-green-100 text-green-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">100% Terjamin Halal</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3 uppercase tracking-tight">
+                Sertifikat Halal
+            </h2>
+            <p class="text-slate-600 text-sm md:text-base mt-3 max-w-2xl mx-auto leading-relaxed">
+                Selain standar medis, seluruh produk AFC telah tersertifikasi Halal secara resmi, memberikan ketenangan dan jaminan keamanan untuk dikonsumsi oleh seluruh umat Muslim.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            <div onclick="bukaSertifikat('sertif-halal-1.png')" class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition text-center flex flex-col items-center justify-center cursor-pointer group">
+                <div class="flex justify-center mb-5 relative">
+                    <img src="sertif-halal-1.png" alt="Sertifikat Halal 1" class="w-32 h-32 object-contain drop-shadow-sm group-hover:scale-105 transition transform duration-300">
+                    <div class="absolute inset-0 bg-white/60 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-3xl">🔍</span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-slate-900 text-base md:text-lg">Sertifikat Halal 1</h3>
+                <p class="text-xs text-green-600 font-semibold mt-2 opacity-0 group-hover:opacity-100 transition">Klik untuk perbesar</p>
+            </div>
+
+            <div onclick="bukaSertifikat('sertif-halal-2.png')" class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg transition text-center flex flex-col items-center justify-center cursor-pointer group">
+                <div class="flex justify-center mb-5 relative">
+                    <img src="sertif-halal-2.png" alt="Sertifikat Halal 2" class="w-32 h-32 object-contain drop-shadow-sm group-hover:scale-105 transition transform duration-300">
+                    <div class="absolute inset-0 bg-white/60 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                        <span class="text-3xl">🔍</span>
+                    </div>
+                </div>
+                <h3 class="font-bold text-slate-900 text-base md:text-lg">Sertifikat Halal 2</h3>
+                <p class="text-xs text-green-600 font-semibold mt-2 opacity-0 group-hover:opacity-100 transition">Klik untuk perbesar</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-12 border-t border-slate-100 mt-8">
+        <div class="text-center mb-10">
+            <span class="bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Legalitas Terjamin</span>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3 uppercase tracking-tight">
+                Produk Kami Telah Teregister Pada
+            </h2>
+        </div>
+
+        <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+            <img src="regis-fda.png" alt="Registrasi FDA" class="h-16 md:h-24 w-auto object-contain hover:scale-110 transition transform duration-300 drop-shadow-sm">
+            
+            <img src="regis-halal.png" alt="Registrasi Halal" class="h-16 md:h-24 w-auto object-contain hover:scale-110 transition transform duration-300 drop-shadow-sm">
+            
+            <img src="regis-mims.png" alt="Registrasi MIMS" class="h-16 md:h-24 w-auto object-contain hover:scale-110 transition transform duration-300 drop-shadow-sm">
+            
+            <img src="regis-moh.png" alt="Registrasi MOH" class="h-16 md:h-24 w-auto object-contain hover:scale-110 transition transform duration-300 drop-shadow-sm">
+            
+            <img src="regis-pom.png" alt="Registrasi BPOM" class="h-16 md:h-24 w-auto object-contain hover:scale-110 transition transform duration-300 drop-shadow-sm">
+        </div>
+    </section>
+
     <section class="bg-slate-900 text-slate-300 py-12 px-6 border-t border-slate-800">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             
@@ -586,7 +706,7 @@
 
     <div class="fixed bottom-6 right-6 z-50">
         <button 
-            onclick="kirimWA('Floating Button WhatsApp')" 
+            onclick="kirimWA('Umum Produk AFC')" 
             class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
         >
         <img src="wa-icon.png" alt="WhatsApp" class="w-10 h-10 object-contain">
@@ -598,18 +718,13 @@
     </footer>
 
     <script>
-        // 1. Logika Dynamic Text Replacement (DTR) saat halaman dibuka
+        // Dynamic Text Replacement (DTR) untuk Judul Utama
         window.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
-            
-            // Menangkap parameter keyword dari URL iklan (bisa pakai ?keyword=... atau ?utm_term=...)
             const rawKeyword = params.get('keyword') || params.get('utm_term');
             
             if (rawKeyword) {
-                // Ubah format teks (mengganti tanda '+' atau '%20' dari URL jadi spasi biasa)
                 const keyword = decodeURIComponent(rawKeyword).replace(/\+/g, ' ');
-                
-                // Cari elemen h1 dengan id "dynamic-headline" lalu ganti teksnya
                 const headline = document.getElementById('dynamic-headline');
                 if (headline) {
                     headline.innerText = `Pusat Resmi & Konsultasi Terapi ${keyword}`;
@@ -617,7 +732,7 @@
             }
         });
 
-        // 2. Fungsi Kirim WhatsApp yang otomatis menyertakan Keyword & UTM
+        // Fungsi Kirim WhatsApp dengan Tracking Keyword & UTM
         function kirimWA(namaProduk) {
             const params = new URLSearchParams(window.location.search);
             const utmSource = params.get('utm_source') || 'Google Ads Utama';
@@ -626,12 +741,23 @@
             
             const nomorWA = "6287828412340"; 
             
-            // Format pesan yang masuk ke WhatsApp lu secara otomatis
-            const pesan = `Halo, saya menemukan info dari pencarian "${keyword}". Saya ingin konsultasi dan pemesanan produk ${namaProduk}. (Sumber Iklan: ${utmSource})`;
+            // Format pesan yang masuk ke WhatsApp lu secara natural dan profesional
+            const pesan = `Halo, saya menemukan info dari pencarian "${keyword}". Saya ingin konsultasi dan pemesanan ${namaProduk}. (Sumber: ${utmSource})`;
             const finalUrl = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
             
             window.open(finalUrl, '_blank');
         }
+        
+        // Fitur Pop-up / Lightbox Sertifikat
+        function bukaSertifikat(srcGambar) {
+            document.getElementById('gambar-besar').src = srcGambar;
+            document.getElementById('modal-sertifikat').classList.remove('hidden');
+        }
+
+        function tutupSertifikat() {
+            document.getElementById('modal-sertifikat').classList.add('hidden');
+        }
+
     </script>
 
 </body>
