@@ -13,21 +13,44 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
-    <header class="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
+    
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm relative">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center relative">
             <div class="flex items-center">
                 <a href="#">
                     <img src="logo.png" alt="Logo AFC Life Science" class="h-9 w-auto object-contain">
                 </a>
             </div>
-            
-            <div class="flex items-center space-x-2">
-                <a href="#produk-satuan-section" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-4 py-2 rounded-lg text-xs md:text-sm transition">
-                    📦 Paket Satuan
-                </a>
-                <a href="#paket-member-section" class="bg-blue-50 hover:bg-blue-100 text-blue-900 font-semibold px-4 py-2 rounded-lg text-xs md:text-sm transition">
-                    ⭐ Paket Member
-                </a>
+
+            <div class="flex items-center">
+                <button onclick="toggleMobileMenu()" id="menu-btn" class="text-slate-700 hover:text-blue-600 focus:outline-none p-2 rounded-lg transition">
+                    <svg id="icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 transition-all duration-300 z-50 origin-top-right">
+                <div class="flex flex-col space-y-2">
+                    <a href="index.html" onclick="toggleMobileMenu()" class="block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm">
+                        🏠 Beranda
+                    </a>
+                    <a href="#produk-satuan-section" onclick="toggleMobileMenu()" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        📦 Paket Satuan
+                    </a>
+                    <a href="#paket-member-section" onclick="toggleMobileMenu()" class="block bg-blue-50 hover:bg-blue-100 text-blue-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        ⭐ Paket Member
+                    </a>
+                    <a href="testimoni.html" onclick="toggleMobileMenu()" class="block bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        💬 Testimoni
+                    </a>
+                    <a href="bisnis.html" onclick="toggleMobileMenu()" class="block bg-amber-50 hover:bg-amber-100 text-amber-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        💼 Peluang Bisnis
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -120,102 +143,136 @@
             <p class="text-gray-600 text-sm mt-2">Pilih produk satuan sesuai kebutuhan kesehatan Anda, atau konsultasikan langsung dengan tim ahli kami.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div id="image-modal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300">
+            <div class="relative max-w-2xl w-full bg-white rounded-2xl p-2 shadow-2xl transform transition-transform scale-95" id="modal-content">
+                <button onclick="closeImageModal()" class="absolute -top-4 -right-4 bg-white text-slate-900 hover:text-red-600 p-2 rounded-full shadow-lg border border-slate-200 transition-colors z-10 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+                <img id="modal-image" src="" alt="Detail Produk" class="w-full h-auto rounded-xl object-contain max-h-[80vh]">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <div class="bg-white rounded-2xl shadow-md border border-blue-100 overflow-hidden flex flex-col justify-between hover:shadow-xl transition transform hover:-translate-y-1">
-                <div class="text-white p-6 text-center" style="background-color: #231A91;">
+                <div class="text-white p-6 text-center cursor-pointer hover:opacity-90 transition group relative" style="background-color: #231A91;" onclick="openImageModal('satuan-sop.jpeg')">
                     <span class="text-xs bg-yellow-500 text-slate-900 font-bold px-2 py-1 rounded">Best Seller Regenerasi Sel</span>
-                    <h3 class="text-2xl font-bold mt-2">SOP Subarashi</h3>
+                    <h3 class="text-xl font-bold mt-2 mb-1">SOP Subarashi</h3>
+                    <div class="inline-flex items-center gap-1 text-[10px] bg-white/20 text-blue-50 px-2 py-0.5 rounded-full mt-2 group-hover:bg-white/40 transition">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        Klik lihat gambar
+                    </div>
                 </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
+                <div class="p-5 flex-grow flex flex-col justify-between">
                     <div>
-                        <p class="text-gray-600 text-sm mb-4">
-                            Sejarah baru terapi stemcell dari Salmon Ovary Peptide. Memiliki 4 Paten Medis untuk perbaikan pembuluh darah, tekanan darah, dan regenerasi sel tubuh.
+                        <p class="text-gray-600 text-xs mb-4">
+                            Sejarah baru terapi stemcell dari Salmon Ovary Peptide. Memiliki Paten Medis untuk perbaikan pembuluh darah, tekanan darah, dan regenerasi sel tubuh.
                         </p>
-                        <ul class="text-xs text-gray-500 space-y-2 mb-4">
-                            <li>✔️ 4 Paten Internasional (Jepang, Korea, China)</li>
+                        <ul class="text-[11px] text-gray-500 space-y-1.5 mb-4">
+                            <li>✔️ Paten Internasional (Jepang, Korea, China)</li>
                             <li>✔️ Bagus untuk Stroke, Diabetes, & Hipertensi</li>
                         </ul>
                     </div>
-
                     <div>
-                        <div class="mb-5 text-center bg-blue-50 p-3 rounded-xl border border-blue-100">
-                            <span class="text-xl font-extrabold text-blue-900">Rp 1.950.000</span>
-                            <span class="text-xs text-slate-500 block mt-0.5">/ box (28 sachet)</span>
+                        <div class="mb-4 text-center bg-blue-50 p-2 rounded-xl border border-blue-100">
+                            <span class="text-lg font-extrabold text-blue-900">Rp 1.950.000</span>
+                            <span class="text-[10px] text-slate-500 block mt-0.5">/ box (28 sachet)</span>
                         </div>
-
-                        <button 
-                            onclick="kirimWA('SOP Subarashi (Satuan)')"
-                            class="w-full text-white font-bold py-3 px-4 rounded-xl shadow transition text-center hover:opacity-90"
-                            style="background-color: #231A91;"
-                        >
-                            Pesan Satuan Subarashi
+                        <button onclick="kirimWA('SOP Subarashi (Satuan)')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #231A91;">
+                            Pesan Satuan
                         </button>
                     </div>
                 </div>
             </div>
 
             <div class="bg-white rounded-2xl shadow-md border border-purple-100 overflow-hidden flex flex-col justify-between hover:shadow-xl transition transform hover:-translate-y-1">
-                <div class="text-white p-6 text-center" style="background-color: #A82C8D;">
+                <div class="text-white p-6 text-center cursor-pointer hover:opacity-90 transition group relative" style="background-color: #A82C8D;" onclick="openImageModal('satuan-utsu.jpeg')">
                     <span class="text-xs bg-yellow-400 text-purple-950 font-bold px-2 py-1 rounded">Imunitas & Usus</span>
-                    <h3 class="text-2xl font-bold mt-2">Utsukushhii</h3>
+                    <h3 class="text-xl font-bold mt-2 mb-1">Utsukushhii</h3>
+                    <div class="inline-flex items-center gap-1 text-[10px] bg-white/20 text-purple-50 px-2 py-0.5 rounded-full mt-2 group-hover:bg-white/40 transition">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        Klik lihat gambar
+                    </div>
                 </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
+                <div class="p-5 flex-grow flex flex-col justify-between">
                     <div>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <p class="text-gray-600 text-xs mb-4">
                             Terapi peremajaan usus (Marine Placenta & Tri-peptide) yang berfungsi meningkatkan daya tahan tubuh serta membantu melawan sel-sel tumor/kanker.
                         </p>
-                        <ul class="text-xs text-gray-500 space-y-2 mb-4">
+                        <ul class="text-[11px] text-gray-500 space-y-1.5 mb-4">
                             <li>✔️ Paten Anti-Tumor Agent & Imunomodulator</li>
                             <li>✔️ Detoksifikasi Racun & Kesehatan Kulit</li>
                         </ul>
                     </div>
-
                     <div>
-                        <div class="mb-5 text-center bg-purple-50 p-3 rounded-xl border border-purple-100">
-                            <span class="text-xl font-extrabold text-purple-900">Rp 1.800.000</span>
-                            <span class="text-xs text-slate-500 block mt-0.5">/ box (28 sachet)</span>
+                        <div class="mb-4 text-center bg-purple-50 p-2 rounded-xl border border-purple-100">
+                            <span class="text-lg font-extrabold text-purple-900">Rp 1.800.000</span>
+                            <span class="text-[10px] text-slate-500 block mt-0.5">/ box (28 sachet)</span>
                         </div>
-
-                        <button 
-                            onclick="kirimWA('Utsukushhii (Satuan)')"
-                            class="w-full text-white font-bold py-3 px-4 rounded-xl shadow transition text-center hover:opacity-90"
-                            style="background-color: #A82C8D;"
-                        >
-                            Pesan Satuan Utsukushhii
+                        <button onclick="kirimWA('Utsukushhii (Satuan)')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #A82C8D;">
+                            Pesan Satuan
                         </button>
                     </div>
                 </div>
             </div>
 
             <div class="bg-white rounded-2xl shadow-md border border-orange-100 overflow-hidden flex flex-col justify-between hover:shadow-xl transition transform hover:-translate-y-1">
-                <div class="text-gray-900 p-6 text-center" style="background-color: #FFE0D9;">
+                <div class="text-white p-6 text-center cursor-pointer hover:opacity-90 transition group relative" style="background-color: #d9776b;" onclick="openImageModal('satuan-hikari.jpeg')">
                     <span class="text-xs bg-blue-900 text-white font-bold px-2 py-1 rounded">Mata & Otak</span>
-                    <h3 class="text-2xl font-bold mt-2 text-gray-900">Hikari</h3>
+                    <h3 class="text-xl font-bold mt-2 mb-1">Hikari</h3>
+                    <div class="inline-flex items-center gap-1 text-[10px] bg-white/30 text-white px-2 py-0.5 rounded-full mt-2 group-hover:bg-white/50 transition">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        Klik lihat gambar
+                    </div>
                 </div>
-                <div class="p-6 flex-grow flex flex-col justify-between">
+                <div class="p-5 flex-grow flex flex-col justify-between">
                     <div>
-                        <p class="text-gray-600 text-sm mb-4">
+                        <p class="text-gray-600 text-xs mb-4">
                             Formula premium untuk nutrisi otak, menjaga ketajaman memori, serta perlindungan sel dari radikal bebas dan penuaan dini secara menyeluruh.
                         </p>
-                        <ul class="text-xs text-gray-500 space-y-2 mb-4">
+                        <ul class="text-[11px] text-gray-500 space-y-1.5 mb-4">
                             <li>✔️ Nutrisi Saraf & Fungsi Kognitif Otak</li>
                             <li>✔️ Antioksidan Tinggi untuk Awet Muda</li>
                         </ul>
                     </div>
-
                     <div>
-                        <div class="mb-5 text-center bg-orange-50 p-3 rounded-xl border border-orange-100">
-                            <span class="text-xl font-extrabold text-orange-900">Rp 1.800.000</span>
-                            <span class="text-xs text-slate-500 block mt-0.5">/ box (28 sachet)</span>
+                        <div class="mb-4 text-center bg-orange-50 p-2 rounded-xl border border-orange-100">
+                            <span class="text-lg font-extrabold text-orange-900">Rp 1.800.000</span>
+                            <span class="text-[10px] text-slate-500 block mt-0.5">/ box (30 sachet)</span>
                         </div>
+                        <button onclick="kirimWA('Hikari (Satuan)')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #d9776b;">
+                            Pesan Satuan
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-                        <button 
-                            onclick="kirimWA('Hikari (Satuan)')"
-                            class="w-full text-white font-bold py-3 px-4 rounded-xl shadow transition text-center hover:opacity-90"
-                            style="background-color: #d9776b;"
-                        >
-                            Pesan Satuan Hikari
+            <div class="bg-white rounded-2xl shadow-md border border-emerald-100 overflow-hidden flex flex-col justify-between hover:shadow-xl transition transform hover:-translate-y-1">
+                <div class="text-white p-6 text-center cursor-pointer hover:opacity-90 transition group relative" style="background-color: #0f766e;" onclick="openImageModal('satuan-sensei.jpeg')">
+                    <span class="text-xs bg-amber-300 text-emerald-950 font-bold px-2 py-1 rounded">Regenerasi Kulit</span>
+                    <h3 class="text-xl font-bold mt-2 mb-1">Sensei Suru</h3>
+                    <div class="inline-flex items-center gap-1 text-[10px] bg-white/20 text-emerald-50 px-2 py-0.5 rounded-full mt-2 group-hover:bg-white/40 transition">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        Klik lihat gambar
+                    </div>
+                </div>
+                <div class="p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                        <p class="text-gray-600 text-xs mb-4">
+                            Serum kecantikan regenerasi sel pertama yang menggabungkan Salmon DNA, Marine Placenta, dan puluhan bahan aktif untuk kulit sehat bercahaya.
+                        </p>
+                        <ul class="text-[11px] text-gray-500 space-y-1.5 mb-4">
+                            <li>✔️ Perbaikan Pori-pori & Tekstur Kulit</li>
+                            <li>✔️ Anti-Aging & Mencerahkan Wajah</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="mb-4 text-center bg-emerald-50 p-2 rounded-xl border border-emerald-100">
+                            <span class="text-lg font-extrabold text-emerald-900">Rp 3.500.000</span>
+                            <span class="text-[10px] text-slate-500 block mt-0.5">/ botol (50ml)</span>
+                        </div>
+                        <button onclick="kirimWA('Sensei Suru (Satuan)')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #0f766e;">
+                            Pesan Satuan
                         </button>
                     </div>
                 </div>
@@ -223,6 +280,44 @@
 
         </div>
     </section>
+
+    <script>
+        function openImageModal(imageSrc) {
+            const modal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalContent = document.getElementById('modal-content');
+            
+            modalImage.src = imageSrc;
+            modal.classList.remove('hidden');
+            
+            // Animasi pop-in (zoom lembut)
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('image-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            // Animasi pop-out (zoom out lembut)
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById('modal-image').src = ""; // Bersihkan gambar
+            }, 200);
+        }
+
+        // Fungsi canggih: Tutup modal otomatis kalau orang ngeklik area hitam di luar gambar
+        document.getElementById('image-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageModal();
+            }
+        });
+    </script>
 
     <section class="max-w-5xl mx-auto px-4 py-10 text-center">
         <div class="mb-6">
@@ -240,7 +335,14 @@
         <div class="text-center mb-12">
             <span class="bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Keuntungan Maksimal & Bisnis</span>
             <h2 class="text-3xl font-bold text-blue-900 mt-2">Paket Member Resmi</h2>
-            <p class="text-gray-600 text-sm mt-2">Pilih level keanggotaan paket member AFC untuk mendapatkan harga resmi terbaik dan hak usaha jaringan.</p>
+            <p class="text-gray-600 text-sm mt-2 mb-6">Pilih level keanggotaan paket member AFC untuk mendapatkan harga resmi terbaik dan hak usaha jaringan.</p>
+    
+            <a href="bisnis.html" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+                <span>💼 Pelajari Potensi Penghasilan & Sistem Bonus AFC</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -262,8 +364,7 @@
                             Paket keanggotaan dasar AFC untuk memulai konsumsi rutin dengan harga resmi serta hak akses bisnis level awal.
                         </p>
                         <div class="mb-6 text-center bg-red-50 p-3 rounded-xl border border-red-100">
-                            <span class="text-xs text-slate-400 line-through block">Normal: Rp 3.750.000</span>
-                            <span class="text-xl font-extrabold text-red-800">Rp 3.500.000</span>
+                            <span class="text-xl font-extrabold text-red-800">Rp 3.750.000</span>
                         </div>
                     </div>
                     <button 
@@ -293,8 +394,7 @@
                             Paket menengah dengan keuntungan bonus jaringan lebih besar dan jumlah produk lebih banyak untuk terapi keluarga.
                         </p>
                         <div class="mb-6 text-center bg-blue-50 p-3 rounded-xl border border-blue-100">
-                            <span class="text-xs text-slate-400 line-through block">Normal: Rp 11.250.000</span>
-                            <span class="text-xl font-extrabold text-blue-900">Rp 10.500.000</span>
+                            <span class="text-xl font-extrabold text-blue-900">Rp 11.250.000</span>
                         </div>
                     </div>
                     <button 
@@ -324,8 +424,7 @@
                             Paket tertinggi dengan hak istimewa penuh, potensi komisi maksimal, dan stok produk melimpah untuk Leader profesional.
                         </p>
                         <div class="mb-6 text-center bg-slate-100 p-3 rounded-xl border border-slate-200">
-                            <span class="text-xs text-slate-400 line-through block">Normal: Rp 22.500.000</span>
-                            <span class="text-xl font-extrabold text-slate-900">Rp 21.000.000</span>
+                            <span class="text-xl font-extrabold text-slate-900">Rp 22.500.000</span>
                         </div>
                     </div>
                     <button 
@@ -345,7 +444,12 @@
             <div class="text-center mb-12">
                 <span class="bg-blue-100 text-blue-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Kisah Nyata</span>
                 <h2 class="text-3xl font-bold text-slate-900 mt-2">Apa Kata Pelanggan Kami?</h2>
-                <p class="text-gray-600 text-sm mt-2">Ribuan orang telah merasakan manfaat nyata dari terapi regenerasi sel AFC.</p>
+                <p class="text-gray-600 text-sm mt-2 mb-6">Ribuan orang telah merasakan manfaat nyata dari terapi regenerasi sel AFC.</p>
+                
+                <a href="testimoni.html" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
+                <span>Lihat 50+ Kisah Sukses Lainnya</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+            </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -542,6 +646,15 @@
                     Setiap tubuh memiliki tingkat metabolisme yang berbeda. Umumnya perubahan positif mulai dirasakan dalam 1-2 minggu pertama. Namun, untuk hasil perbaikan dan regenerasi sel yang optimal, disarankan konsumsi rutin selama 1 hingga 6 bulan penuh (masa pergantian sel tubuh secara alami).
                 </div>
             </details>
+        </div>
+
+        <div class="mt-10 text-center">
+            <a href="pertanyaan.html" class="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-blue-900 text-white font-semibold py-3.5 px-8 rounded-full shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300 text-sm">
+                <span>Lihat Selengkapnya & Semua Pertanyaan Lainnya</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </a>
         </div>
     </section>
 
@@ -785,7 +898,7 @@
     <footer class="bg-white border-t border-slate-100 py-8 text-center text-slate-500 text-sm mt-12">
         <p>&copy; 2026 AFC Selling Candle. All rights reserved.</p>
     </footer>
-
+    
     <script>
         // Dynamic Text Replacement (DTR) untuk Judul Utama
         window.addEventListener('DOMContentLoaded', () => {
@@ -826,6 +939,19 @@
         function tutupSertifikat() {
             document.getElementById('modal-sertifikat').classList.add('hidden');
         }
+
+        function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        // Buka/tutup dropdown
+        menu.classList.toggle('hidden');
+        
+        // Ubah ikon dari 3 garis jadi silang (X)
+        iconOpen.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+    }
 
     </script>
 
