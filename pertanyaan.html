@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Pusat Bantuan | Produk AFC Life Science Jepang</title>
+    <meta name="description" content="Temukan jawaban untuk pertanyaan yang sering diajukan (FAQ) seputar produk, cara konsumsi, pengiriman, dan kemitraan bisnis AFC Life Science.">
+    
+    <meta property="og:title" content="FAQ & Pusat Bantuan | Produk AFC Life Science Jepang">
+    <meta property="og:description" content="Pusat bantuan dan FAQ seputar produk dan bisnis AFC Life Science.">
+    <meta property="og:image" content="https://afc-lifescience.store/detail-product.jpeg">
+    <meta property="og:url" content="https://afc-lifescience.store/pertanyaan.html">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FAQ & Pusat Bantuan | Produk AFC Life Science Jepang">
+    <meta name="twitter:description" content="Pusat bantuan dan FAQ seputar produk dan bisnis AFC Life Science.">
+    <meta name="twitter:image" content="https://afc-lifescience.store/detail-product.jpeg">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <link rel="canonical" href="https://afc-lifescience.store/pertanyaan.html">
+
+    <!-- TOOLTIP TUTORIAL AWAL -->
+    <div id="menu-tutorial" class="hidden fixed top-16 right-4 z-[60] max-w-xs bg-slate-900/95 backdrop-blur-md text-white p-4 rounded-2xl shadow-2xl border border-yellow-400/50 animate-bounce">
+        <div class="absolute -top-2 right-4 w-4 h-4 bg-slate-900 rotate-45 border-l border-t border-yellow-400/50"></div>
+        
+        <div class="flex items-start gap-3">
+            <span class="text-2xl">💡</span>
+            <div>
+                <h4 class="font-bold text-sm text-yellow-400 mb-1">Petunjuk Navigasi</h4>
+                <p class="text-xs text-slate-200 leading-relaxed mb-3">
+                    Klik ikon 3 garis (☰) di pojok kanan atas ini untuk membuka pilihan Katalog Produk, Testimoni, Peluang Bisnis, & FAQ!
+                </p>
+                <button onclick="tutupTutorial()" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold text-xs py-1.5 px-4 rounded-full transition shadow-md">
+                    Oke, Paham!
+                </button>
+            </div>
+        </div>
+    </div>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    
+    <!-- HEADER & NAVIGASI -->
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm relative">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center relative">
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="logo.png" alt="Logo AFC Life Science" class="h-9 w-auto object-contain">
+                </a>
+            </div>
+
+            <div class="flex items-center">
+                <button onclick="toggleMobileMenu()" id="menu-btn" class="text-slate-700 hover:text-blue-600 focus:outline-none p-2 rounded-lg transition">
+                    <svg id="icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- DROPDOWN MENU MOBILE -->
+            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 transition-all duration-300 z-50 origin-top-right">
+                <div class="flex flex-col space-y-2">
+                    <a href="index.html" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm">
+                        🏠 Beranda
+                    </a>
+                    <a href="index.html#produk-satuan-section" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        📦 Paket Satuan
+                    </a>
+                    <a href="index.html#paket-member-section" class="block bg-blue-50 hover:bg-blue-100 text-blue-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        ⭐ Paket Member
+                    </a>
+                    <a href="testimoni.html" class="block bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        💬 Testimoni
+                    </a>
+                    <a href="bisnis.html" class="block bg-amber-50 hover:bg-amber-100 text-amber-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        💼 Peluang Bisnis
+                    </a>
+                    <a href="pertanyaan.html" class="block bg-purple-600 text-white font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-md">
+                        ❓ FAQ
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION FAQ -->
+    <section class="bg-gradient-to-b from-purple-900 to-indigo-800 text-white px-6 py-16 text-center">
+        <span class="bg-yellow-500 text-purple-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">Pusat Bantuan</span>
+        <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-4 max-w-3xl mx-auto" id="dynamic-headline">
+            Pertanyaan Seputar Produk & Bisnis AFC
+        </h1>
+        <p class="text-base md:text-lg text-purple-100 max-w-2xl mx-auto">
+            Temukan jawaban lengkap mengenai manfaat produk, panduan konsumsi, keamanan, hingga informasi kemitraan resmi.
+        </p>
+    </section>
+
+    <!-- KONTEN FAQ & FILTER -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+
+        <!-- TOMBOL FILTER (Bisa di-scroll ke samping kalau layar HP kecil) -->
+        <div class="flex items-center space-x-3 overflow-x-auto scrollbar-hide pb-4 mb-8 px-2 w-full justify-start">
+            <button class="filter-btn active-filter whitespace-nowrap px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-blue-600 text-white shadow-md flex-shrink-0" data-filter="semua">
+                Semua Pertanyaan
+            </button>
+            <button class="filter-btn whitespace-nowrap px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:bg-purple-50 flex-shrink-0" data-filter="produk">
+                💊 Produk & Konsumsi
+            </button>
+            <button class="filter-btn whitespace-nowrap px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:bg-blue-50 flex-shrink-0" data-filter="bisnis">
+                💼 Kemitraan Member
+            </button>
+            <button class="filter-btn whitespace-nowrap px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-white text-slate-600 border border-slate-200 hover:bg-emerald-50 flex-shrink-0" data-filter="pengiriman">
+                🚚 Pengiriman & Garansi
+            </button>
+        </div>
+
+        <!-- WADAH FAQ DINAMIS DARI CSV -->
+        <div id="faq-container" class="space-y-4">
+            <!-- Loading indicator -->
+            <div class="text-center text-slate-500 py-10 animate-pulse">Memuat pertanyaan...</div>
+        </div>
+
+        <!-- CALL TO ACTION: HUBUNGI KAMI JIKA TIDAK ADA JAWABAN -->
+        <div class="mt-16 text-center bg-white border border-slate-200 p-8 rounded-3xl shadow-lg relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-purple-100 rounded-full blur-3xl opacity-50 z-0"></div>
+            <div class="relative z-10">
+                <span class="text-4xl mb-4 block">💬</span>
+                <h3 class="text-2xl font-bold text-slate-900 mb-3">Masih Punya Pertanyaan Lain?</h3>
+                <p class="text-slate-600 text-sm md:text-base mb-8 max-w-lg mx-auto">
+                    Jangan ragu. Konsultasikan langsung kondisi Anda atau pertimbangkan strategi bisnis yang tepat bersama tim ahli kami via WhatsApp.
+                </p>
+                <button 
+                    onclick="kirimWA('Konsultasi via Halaman FAQ')"
+                    class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base"
+                >
+                    Tanya Langsung via WhatsApp
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER & INFORMASI (Diambil dari index.html) -->
+    <section class="bg-slate-900 text-slate-300 py-12 px-6 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <div>
+                <div class="text-white font-bold text-lg mb-3 tracking-wide flex items-center">
+                    <span class="text-green-500 mr-2">💬</span> Hubungi Kami
+                </div>
+                <p class="text-sm text-slate-400 mb-2">
+                    Punya pertanyaan seputar produk atau pendaftaran member? Silakan hubungi tim kami langsung via WhatsApp.
+                </p>
+                <p class="text-lg font-extrabold text-yellow-400 tracking-wider mb-3">
+                    0878-2841-2340
+                </p>
+                <button 
+                    onclick="kirimWA('Tanya Seputar Produk / Bisnis')" 
+                    class="inline-block bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-5 rounded-full text-xs transition shadow"
+                >
+                    Chat WhatsApp Sekarang
+                </button>
+            </div>
+
+            <div>
+                <div class="text-white font-bold text-lg mb-3 tracking-wide flex items-center">
+                    <span class="text-blue-400 mr-2">⚠️</span> Disclaimer
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Hasil yang dirasakan setiap individu dapat bervariasi tergantung pada kondisi metabolisme dan kesehatan tubuh masing-masing. Situs ini merupakan media informasi independen agen resmi dan bukan situs resmi korporat AFC Lifescience Japan.
+                </p>
+            </div>
+
+            <div>
+                <div class="text-white font-bold text-lg mb-3 tracking-wide flex items-center">
+                    <span class="text-purple-400 mr-2">🔒</span> Kebijakan Privasi
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Kami sangat menjaga kerahasiaan data pribadi Anda. Seluruh informasi nomor telepon atau data yang Anda masukkan hanya digunakan untuk keperluan konsultasi dan pemesanan produk dan tidak akan disebarluaskan kepada pihak ketiga.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-slate-100 py-8 text-center text-slate-500 text-sm mt-12">
+        <p>&copy; 2026 AFC Selling Candle. All rights reserved.</p>
+    </footer>
+    
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button 
+            onclick="kirimWA('Konsultasi dari Halaman FAQ')" 
+            class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
+        >
+        <img src="wa-icon.png" alt="WhatsApp" class="w-10 h-10 object-contain">
+        </button>
+    </div>
+
+    <!-- =========================================
+        JAVASCRIPT
+    ========================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script>
+        // 1. Dynamic Text Replacement
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const rawKeyword = params.get('keyword') || params.get('utm_term');
+            if (rawKeyword) {
+                const keyword = decodeURIComponent(rawKeyword).replace(/\+/g, ' ');
+                const headline = document.getElementById('dynamic-headline');
+                if (headline) {
+                    headline.innerText = `Pusat Bantuan Terapi ${keyword}`;
+                }
+            }
+        });
+
+        // 2. WhatsApp Sender
+        function kirimWA(topik) {
+            const params = new URLSearchParams(window.location.search);
+            const utmSource = params.get('utm_source') || 'Google Ads FAQ';
+            const rawKeyword = params.get('keyword') || params.get('utm_term') || 'Pencarian Bantuan';
+            const keyword = decodeURIComponent(rawKeyword).replace(/\+/g, ' ');
+            
+            const nomorWA = "6287828412340"; 
+            const pesan = `Halo, saya baru membaca Halaman FAQ dan ingin konsultasi soal ${topik}. (Sumber: ${utmSource})`;
+            const finalUrl = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+            window.open(finalUrl, '_blank');
+        }
+        
+        // 3. Logika Tutorial (LocalStorage)
+        window.addEventListener('DOMContentLoaded', () => {
+            const sudahPernahBuka = localStorage.getItem('afcMenuTutorialDone');
+            if (!sudahPernahBuka) {
+                const tutorial = document.getElementById('menu-tutorial');
+                if (tutorial) {
+                    setTimeout(() => {
+                        tutorial.classList.remove('hidden');
+                    }, 1000);
+                }
+            }
+        });
+
+        function tutupTutorial() {
+            const tutorial = document.getElementById('menu-tutorial');
+            if (tutorial) {
+                tutorial.classList.add('hidden');
+            }
+            localStorage.setItem('afcMenuTutorialDone', 'true');
+        }
+
+        // 4. Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+
+            menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+            
+            tutupTutorial();
+        }
+
+        // 5. Fetch CSV & Tampilkan FAQ Dinamis
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById('faq-container');
+            
+            Papa.parse("pertanyaan.csv", {
+                download: true,
+                header: true,
+                skipEmptyLines: true,
+                complete: function(results) {
+                    const rows = results.data;
+                    let htmlContent = "";
+
+                    rows.forEach(row => {
+                        htmlContent += `
+                            <details class="faq-item group bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden cursor-pointer transition hover:border-${row.warna}-300" data-category="${row.kategori_id}">
+                                <summary class="flex justify-between items-center font-bold p-5 text-slate-800 group-open:bg-${row.warna}-50 transition-colors list-none [&::-webkit-details-marker]:hidden">
+                                    <div class="flex items-center gap-3 pr-4">
+                                        <span class="hidden md:inline-block text-[10px] font-bold bg-${row.warna}-100 text-${row.warna}-800 px-2 py-1 rounded-full uppercase tracking-wider whitespace-nowrap">
+                                            ${row.kategori_nama}
+                                        </span>
+                                        <span>${row.pertanyaan}</span>
+                                    </div>
+                                    <span class="transition group-open:rotate-180 text-slate-400 group-open:text-${row.warna}-600 flex-shrink-0">
+                                        <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="24"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </span>
+                                </summary>
+                                <div class="p-5 text-slate-600 text-sm md:text-base border-t border-slate-100 leading-relaxed bg-white">
+                                    ${row.jawaban}
+                                </div>
+                            </details>
+                        `;
+                    });
+
+                    container.innerHTML = htmlContent;
+                    inisialisasiFilterFAQ();
+                },
+                error: function(err) {
+                    container.innerHTML = `<div class="text-center text-red-500 font-bold p-4">Gagal memuat pertanyaan. Pastikan file "pertanyaan.csv" tersedia di folder yang sama.</div>`;
+                }
+            });
+        });
+
+        // 6. Logika Tombol Filter Kategori FAQ
+        function inisialisasiFilterFAQ() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    // Ubah style tombol aktif
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'active-filter');
+                        b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                    });
+                    btn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'active-filter');
+                    btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+
+                    // Tampilkan atau sembunyikan item FAQ
+                    faqItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category'); 
+                        
+                        if (filterValue === 'semua' || itemCategory === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+</html>
