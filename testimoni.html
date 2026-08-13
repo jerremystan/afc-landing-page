@@ -55,6 +55,22 @@
 
         <link rel="canonical" href="https://afc-lifescience.store/testimoni.html">
         
+        <div id="menu-tutorial" class="hidden fixed top-16 right-4 z-[60] max-w-xs bg-slate-900/95 backdrop-blur-md text-white p-4 rounded-2xl shadow-2xl border border-yellow-400/50 animate-bounce">
+    <div class="absolute -top-2 right-4 w-4 h-4 bg-slate-900 rotate-45 border-l border-t border-yellow-400/50"></div>
+    
+    <div class="flex items-start gap-3">
+        <span class="text-2xl">💡</span>
+        <div>
+            <h4 class="font-bold text-sm text-yellow-400 mb-1">Petunjuk Navigasi</h4>
+            <p class="text-xs text-slate-200 leading-relaxed mb-3">
+                Klik ikon 3 garis (☰) di pojok kanan atas ini untuk membuka pilihan Katalog Produk, Testimoni, Peluang Bisnis, & FAQ!
+            </p>
+            <button onclick="tutupTutorial()" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold text-xs py-1.5 px-4 rounded-full transition shadow-md">
+                Oke, Paham!
+            </button>
+        </div>
+    </div>
+</div>
 
     </head>
 
@@ -223,7 +239,7 @@
 
         <!-- FILTER -->
 
-        <div class="flex space-x-3 overflow-x-auto pb-4 mb-8 scrollbar-hide justify-start md:justify-center px-2">
+        <div class="flex flex-wrap gap-3 pb-4 mb-8 justify-start md:justify-center px-2">
 
             <button
                 class="filter-btn active-filter whitespace-nowrap px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 bg-blue-600 text-white shadow-md"
@@ -297,195 +313,7 @@
             6. Ganti judul
         ========================================== -->
 
-        <div
-            id="video-gallery"
-            class="grid grid-cols-2 md:grid-cols-4 gap-4 px-2"
-        >
-
-
-            <!-- =====================================
-                VIDEO 1
-            ====================================== -->
-
-            <a
-                href="https://www.instagram.com/reel/Db20KeezyAH/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="video-item relative rounded-2xl overflow-hidden aspect-[9/16] cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-slate-200 block"
-                data-category="dokter, mata"
-                data-instagram="https://www.instagram.com/reel/Db20KeezyAH/"
-            >
-
-                <img
-                    src=""
-                    alt="Penjelasan Dokter Tumor Mata AFC"
-                    class="instagram-thumbnail w-full h-full object-cover"
-                    loading="lazy"
-                >
-
-                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 flex items-center justify-center transition-all duration-300">
-
-                    <div class="w-14 h-14 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
-
-                        <svg
-                            class="w-7 h-7 text-white ml-1"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-
-                    </div>
-
-                </div>
-
-
-                <div class="absolute top-3 left-3">
-
-                    <span class="text-[10px] bg-gradient-to-r from-purple-600 to-pink-500 text-white px-2 py-1 rounded-full font-bold">
-                        Instagram Reel
-                    </span>
-
-                </div>
-
-
-                <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
-
-                    <span class="text-[10px] bg-blue-600 px-2 py-0.5 rounded font-bold uppercase tracking-wider mb-1 inline-block">
-                        Kata Dokter
-                    </span>
-
-                    <p class="text-sm font-semibold leading-tight line-clamp-2">
-                        Penjelasan Medis Cara Produk AFC Menyembuhkan Tumor Mata
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <!-- =====================================
-                VIDEO 2
-            ====================================== -->
-
-            <a
-                href="https://www.instagram.com/reel/Db2P8bezTDI"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="video-item relative rounded-2xl overflow-hidden aspect-[9/16] cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-slate-200 block"
-                data-category="pasien, tulang"
-                data-instagram="https://www.instagram.com/reel/Db2P8bezTDI"
-            >
-
-                <img
-                    src=""
-                    alt="Testimoni Pasien Patah Tulang"
-                    class="instagram-thumbnail w-full h-full object-cover"
-                    loading="lazy"
-                >
-
-                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 flex items-center justify-center transition-all duration-300">
-
-                    <div class="w-14 h-14 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
-
-                        <svg
-                            class="w-7 h-7 text-white ml-1"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-
-                    </div>
-
-                </div>
-
-
-                <div class="absolute top-3 left-3">
-
-                    <span class="text-[10px] bg-gradient-to-r from-purple-600 to-pink-500 text-white px-2 py-1 rounded-full font-bold">
-                        Instagram Reel
-                    </span>
-
-                </div>
-
-
-                <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
-
-                    <span class="text-[10px] bg-amber-500 text-amber-950 px-2 py-0.5 rounded font-bold uppercase tracking-wider mb-1 inline-block">
-                        Kisah Nyata
-                    </span>
-
-                    <p class="text-sm font-semibold leading-tight line-clamp-2">
-                        Pengalaman Pasien sembuh Patah Tulang
-                    </p>
-
-                </div>
-
-            </a>
-
-
-            <!-- =====================================
-                VIDEO 3
-            ====================================== -->
-
-            <a
-                href="https://www.instagram.com/reel/Db2OeQIzN8F"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="video-item relative rounded-2xl overflow-hidden aspect-[9/16] cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-slate-200 block"
-                data-category="pasien, hipertensi"
-                data-instagram="https://www.instagram.com/reel/Db2OeQIzN8F"
-            >
-
-                <img
-                    src=""
-                    alt="Testimoni Utsukushhii"
-                    class="instagram-thumbnail w-full h-full object-cover"
-                    loading="lazy"
-                >
-
-                <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 flex items-center justify-center transition-all duration-300">
-
-                    <div class="w-14 h-14 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
-
-                        <svg
-                            class="w-7 h-7 text-white ml-1"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-
-                    </div>
-
-                </div>
-
-
-                <div class="absolute top-3 left-3">
-
-                    <span class="text-[10px] bg-gradient-to-r from-purple-600 to-pink-500 text-white px-2 py-1 rounded-full font-bold">
-                        Instagram Reel
-                    </span>
-
-                </div>
-
-
-                <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
-
-                    <span class="text-[10px] bg-pink-500 px-2 py-0.5 rounded font-bold uppercase tracking-wider mb-1 inline-block">
-                        Hipertensi
-                    </span>
-
-                    <p class="text-sm font-semibold leading-tight line-clamp-2">
-                        Sembuh dari Hipertensi dengan SOP Subarashi dan Utsi
-                    </p>
-
-                </div>
-
-            </a>
-
-
+        <div id="video-container" class="grid grid-cols-2 md:grid-cols-4 gap-4 px-2">
         </div>
 
 
@@ -1068,6 +896,7 @@
             iconOpen.classList.toggle('hidden');
 
             iconClose.classList.toggle('hidden');
+            tutupTutorial();
 
         }
 
@@ -1117,8 +946,139 @@
 
         }
 
-    </script>
-    
 
+        window.addEventListener('DOMContentLoaded', () => {
+
+            const sudahPernahBuka = localStorage.getItem('afcMenuTutorialDone');
+            
+            if (!sudahPernahBuka) {
+                const tutorial = document.getElementById('menu-tutorial');
+                if (tutorial) {
+
+                    setTimeout(() => {
+                        tutorial.classList.remove('hidden');
+                    }, 1000);
+                }
+            }
+        });
+
+        function tutupTutorial() {
+            const tutorial = document.getElementById('menu-tutorial');
+            if (tutorial) {
+                tutorial.classList.add('hidden');
+            }
+
+            localStorage.setItem('afcMenuTutorialDone', 'true');
+}  
+    document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById('video-container');
+        
+        // Pastikan file "reels.csv" ada di satu folder yang sama
+        Papa.parse("reels.csv", {
+            download: true,
+            header: true, // Membaca baris pertama CSV sebagai nama kolom (header)
+            skipEmptyLines: true,
+            complete: function(results) {
+                const rows = results.data;
+                let htmlContent = "";
+
+                // Looping tiap baris yang ada di reels.csv
+                rows.forEach(row => {
+                    // row.link, row.filters, row.thumbnail, row.short_desc, row.sd_color, row.long_desc
+                    // Menyesuaikan dengan nama kolom yang ada di CSV lu
+
+                    htmlContent += `
+                        <a href="${row.link}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="video-item relative rounded-2xl overflow-hidden aspect-[9/16] cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-slate-200 block"
+                            data-category="${row.filters}"
+                            data-instagram="${row.link}"
+                        >
+                            <img
+                                src="${row.thumbnail}"
+                                alt="${row.long_desc}"
+                                class="instagram-thumbnail w-full h-full object-cover"
+                                loading="lazy"
+                            >
+
+                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 flex items-center justify-center transition-all duration-300">
+                                <div class="w-14 h-14 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
+                                    <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="absolute top-3 left-3">
+                                <span class="text-[10px] bg-gradient-to-r from-purple-600 to-pink-500 text-white px-2 py-1 rounded-full font-bold">
+                                    Instagram Reel
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                                <span class="text-[10px] bg-${row.sd_color}-600 px-2 py-0.5 rounded font-bold uppercase tracking-wider mb-1 inline-block">
+                                    ${row.short_desc}
+                                </span>
+                                <p class="text-sm font-semibold leading-tight line-clamp-2">
+                                    ${row.long_desc}
+                                </p>
+                            </div>
+                        </a>
+                    `;
+                });
+
+                // Masukin hasil looping ke dalam container HTML
+                container.innerHTML = htmlContent;
+
+                // PENTING: Karena elemennya dibuat secara dinamis oleh JavaScript,
+                // jalankan ulang fungsi filter agar tombol kategori tetap berfungsi!
+                inisialisasiFilter();
+            }
+        });
+    });
+
+    // Fungsi untuk memastikan tombol filter tetap jalan setelah data CSV termuat
+    function inisialisasiFilter() {
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const videoItems = document.querySelectorAll('.video-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filterValue = btn.getAttribute('data-filter');
+
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'active-filter');
+                    b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                });
+                btn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'active-filter');
+                btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+
+                // Tangkap ulang videoItems karena baru dirender oleh PapaParse
+                const currentVideoItems = document.querySelectorAll('.video-item');
+                currentVideoItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    const tags = itemCategory ? itemCategory.split(',').map(tag => tag.trim()) : [];
+                    
+                    if (filterValue === 'semua' || tags.includes(filterValue)) {
+                        item.classList.remove('hidden');
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 50);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            item.classList.add('hidden');
+                        }, 300);
+                    }
+                });
+            });
+        });
+    }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    
     </body>
 </html>
