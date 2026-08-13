@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluang Bisnis AFC Resmi | Pendaftaran Member & Reseller AFC Life Science</title>
+    <meta name="description" content="Bergabung menjadi Member & Reseller Resmi AFC Life Science Jepang. Dapatkan potensi penghasilan harian, bonus sponsorship, dan sistem automasi pemasaran digital.">
+    
+    <meta property="og:title" content="Peluang Bisnis AFC Resmi | Pendaftaran Member AFC Life Science">
+    <meta property="og:description" content="Raih penghasilan harian dan kebebasan finansial dari bisnis kesehatan nomor 1 dari Jepang.">
+    <meta property="og:image" content="https://afc-lifescience.store/detail-product.jpeg">
+    <meta property="og:url" content="https://afc-lifescience.store/bisnis.html">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Peluang Bisnis AFC Resmi | Pendaftaran Member AFC Life Science">
+    <meta name="twitter:description" content="Raih penghasilan harian dan kebebasan finansial dari bisnis kesehatan nomor 1 dari Jepang.">
+    <meta name="twitter:image" content="https://afc-lifescience.store/detail-product.jpeg">
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <link rel="canonical" href="https://afc-lifescience.store/bisnis.html">
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+    
+    <header class="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm relative">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center relative">
+            <div class="flex items-center">
+                <a href="index.html">
+                    <img src="logo.png" alt="Logo AFC Life Science" class="h-9 w-auto object-contain">
+                </a>
+            </div>
+
+            <div class="flex items-center">
+                <button onclick="toggleMobileMenu()" id="menu-btn" class="text-slate-700 hover:text-blue-600 focus:outline-none p-2 rounded-lg transition relative">
+                    <svg id="icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 transition-all duration-300 z-50 origin-top-right">
+                <div class="flex flex-col space-y-2">
+                    <a href="index.html" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm">
+                        🏠 Beranda
+                    </a>
+                    <a href="index.html#produk-satuan-section" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        📦 Paket Satuan
+                    </a>
+                    <a href="index.html#paket-member-section" class="block bg-blue-50 hover:bg-blue-100 text-blue-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        ⭐ Paket Member
+                    </a>
+                    <a href="testimoni.html" class="block bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        💬 Testimoni
+                    </a>
+                    <a href="bisnis.html" class="block bg-amber-500 text-white font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-md">
+                        💼 Peluang Bisnis
+                    </a>
+                    <a href="pertanyaan.html" class="block bg-purple-50 hover:bg-purple-100 text-purple-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        ❓ FAQ
+                    </a>
+                </div>
+            </div>
+
+            <div id="menu-tutorial" class="hidden fixed top-16 right-4 z-[60] max-w-xs bg-slate-900/95 backdrop-blur-md text-white p-4 rounded-2xl shadow-2xl border border-yellow-400/50 animate-bounce">
+                <div class="absolute -top-2 right-4 w-4 h-4 bg-slate-900 rotate-45 border-l border-t border-yellow-400/50"></div>
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl">💡</span>
+                    <div>
+                        <h4 class="font-bold text-sm text-yellow-400 mb-1">Petunjuk Navigasi</h4>
+                        <p class="text-xs text-slate-200 leading-relaxed mb-3">
+                            Klik ikon 3 garis (☰) di pojok kanan atas ini untuk melihat pilihan **Katalog Produk**, **Testimoni**, **Peluang Bisnis**, & **FAQ**!
+                        </p>
+                        <button onclick="tutupTutorial()" class="bg-yellow-500 hover:bg-yellow-400 text-slate-950 font-bold text-xs py-1.5 px-4 rounded-full transition shadow-md">
+                            Oke, Paham!
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <section class="bg-gradient-to-b from-amber-900 via-amber-800 to-amber-900 text-white px-6 py-16 text-center relative overflow-hidden">
+        <div class="absolute -top-10 -left-10 w-40 h-40 bg-amber-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-10 -right-10 w-60 h-60 bg-yellow-500/10 rounded-full blur-3xl"></div>
+
+        <span class="bg-amber-400 text-amber-950 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-4 inline-block shadow-sm">
+            💼 Peluang Bisnis Member AFC
+        </span>
+
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight mb-4 max-w-4xl mx-auto" id="dynamic-headline">
+            Bagaimana Member AFC Menjalankan Bisnis?
+        </h1>
+
+        <p class="text-base md:text-lg text-amber-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Pelajari cara kerja bisnis AFC mulai dari mengenalkan produk, mendapatkan customer, mengajak partner, membangun dua jalur, hingga memahami sistem bonus yang tersedia bagi member.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+            <button
+                onclick="kirimWA('Konsultasi Cara Menjalankan Bisnis AFC')"
+                class="bg-green-500 hover:bg-green-400 text-white font-bold py-3.5 px-8 rounded-full shadow-xl transition transform hover:-translate-y-1 text-sm md:text-base flex items-center justify-center gap-2"
+            >
+                <span>💬 Konsultasi Cara Memulai</span>
+            </button>
+        </div>
+    </section>
+
+
+    <section class="max-w-6xl mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">
+                Memahami Bisnis AFC
+            </span>
+
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-3">
+                Member AFC Tidak Hanya Menjual Produk
+            </h2>
+
+            <p class="text-slate-600 text-sm mt-2 max-w-3xl mx-auto leading-relaxed">
+                Dalam model bisnis AFC, aktivitas member dapat berkembang dari penjualan langsung menjadi sponsorship, pengembangan dua jalur, dan pembentukan jaringan bisnis.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-amber-100 text-amber-700 rounded-xl flex items-center justify-center text-2xl mb-4">🛍️</div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2">Mengenalkan Produk</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Memperkenalkan produk AFC kepada calon customer dan membangun repeat order melalui hubungan dengan customer.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-xl flex items-center justify-center text-2xl mb-4">🤝</div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2">Sponsorship</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Mengajak orang yang tertarik untuk bergabung sebagai partner dan membangun bisnis bersama.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center text-2xl mb-4">📱</div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2">Pemasaran</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Mengembangkan cara pemasaran sendiri melalui relasi, komunitas, media sosial, WhatsApp, maupun channel digital yang sesuai.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 bg-purple-100 text-purple-700 rounded-xl flex items-center justify-center text-2xl mb-4">📈</div>
+                <h3 class="font-bold text-lg text-slate-900 mb-2">Bangun Tim</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Mengembangkan jaringan dua jalur dan membantu partner memahami produk, pemasaran, serta cara menjalankan bisnis.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="bg-slate-100 py-16 px-4">
+        <div class="max-w-6xl mx-auto">
+
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold text-blue-700 uppercase tracking-widest bg-blue-100 px-3 py-1 rounded-full">
+                    Alur Bisnis
+                </span>
+
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-3">
+                    Dari Customer Sampai Membangun Jaringan
+                </h2>
+
+                <p class="text-slate-600 text-sm mt-2 max-w-3xl mx-auto">
+                    Bisnis dapat dijalankan secara bertahap. Fokus awalnya adalah memahami produk dan membangun aktivitas, kemudian berkembang ke sponsorship dan pengembangan tim.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm">
+                    <div class="text-3xl mb-4">1️⃣</div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">Mulai dari Produk</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Kenali produk AFC, pahami penggunaannya, lalu mulai mengenalkan dan menawarkan produk kepada customer.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm">
+                    <div class="text-3xl mb-4">2️⃣</div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">Bangun Partner</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Setelah memahami alurnya, member dapat melakukan sponsorship dan membantu partner memulai aktivitas mereka.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm">
+                    <div class="text-3xl mb-4">3️⃣</div>
+                    <h3 class="text-xl font-extrabold text-slate-900 mb-2">Kembangkan Dua Jalur</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Tim berkembang ke sisi kiri dan kanan. Dalam compensation plan AFC, volume pada kedua sisi dapat menjadi dasar perhitungan pairing sesuai kualifikasi.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="max-w-6xl mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+
+            <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-8 md:p-10">
+                <span class="text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">
+                    2 Line Business
+                </span>
+
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-4 mb-3">
+                    Bagaimana Sistem Dua Jalur Bekerja?
+                </h2>
+
+                <p class="text-sm text-slate-600 leading-relaxed mb-7">
+                    Materi AFC menjelaskan model bisnis dua jalur, dengan aktivitas tim berada pada jalur kiri dan kanan. Ketika terdapat pasangan volume pada kedua sisi, pairing bonus dapat terjadi sesuai compensation plan dan kualifikasi member.
+                </p>
+
+                <div class="flex items-center justify-center gap-3 md:gap-6 text-center mb-8">
+
+                    <div class="flex-1 bg-blue-50 border border-blue-100 rounded-2xl p-5">
+                        <div class="text-2xl mb-2">⬅️</div>
+                        <div class="font-bold text-blue-900">Left Team</div>
+                        <div class="text-xs text-blue-700 mt-1">Jalur Kiri</div>
+                    </div>
+
+                    <div class="text-2xl text-slate-400">↔️</div>
+
+                    <div class="flex-1 bg-amber-50 border border-amber-100 rounded-2xl p-5">
+                        <div class="text-2xl mb-2">➡️</div>
+                        <div class="font-bold text-amber-900">Right Team</div>
+                        <div class="text-xs text-amber-700 mt-1">Jalur Kanan</div>
+                    </div>
+
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-5">
+                    <p class="text-sm font-semibold text-slate-900 mb-1">Pairing Bonus</p>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Pairing terjadi ketika terdapat pasangan package/volume pada sisi kiri dan kanan sesuai aturan compensation plan. Sisa point pada salah satu sisi dapat dibawa ke hari berikutnya sesuai ketentuan.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="bg-gradient-to-br from-blue-900 to-slate-900 rounded-3xl text-white shadow-xl p-8 md:p-10">
+
+                <span class="text-xs font-bold text-blue-200 uppercase tracking-widest bg-white/10 px-3 py-1 rounded-full">
+                    Sumber Penghasilan
+                </span>
+
+                <h2 class="text-2xl md:text-3xl font-extrabold mt-4 mb-5">
+                    Komponen Bonus dalam Compensation Plan
+                </h2>
+
+                <div class="space-y-4">
+
+                    <div class="bg-white/10 rounded-2xl p-5 border border-white/10">
+                        <h3 class="font-bold mb-1">1. Direct Sponsor / Daily Bonus</h3>
+                        <p class="text-sm text-blue-100 leading-relaxed">
+                            Bonus yang berkaitan dengan aktivitas sponsorship langsung sesuai posisi dan kualifikasi.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/10 rounded-2xl p-5 border border-white/10">
+                        <h3 class="font-bold mb-1">2. Pass Up Bonus</h3>
+                        <p class="text-sm text-blue-100 leading-relaxed">
+                            Bonus yang dijelaskan dalam compensation plan ketika aktivitas tertentu memenuhi ketentuan sistem.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/10 rounded-2xl p-5 border border-white/10">
+                        <h3 class="font-bold mb-1">3. Pairing Bonus</h3>
+                        <p class="text-sm text-blue-100 leading-relaxed">
+                            Bonus berdasarkan pasangan volume pada left team dan right team sesuai kualifikasi.
+                        </p>
+                    </div>
+
+                    <div class="bg-white/10 rounded-2xl p-5 border border-white/10">
+                        <h3 class="font-bold mb-1">4. Unilevel Bonus</h3>
+                        <p class="text-sm text-blue-100 leading-relaxed">
+                            Materi AFC juga menjelaskan bonus berdasarkan level jaringan dan kualifikasi bulanan.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="bg-amber-50 py-16 px-4 border-y border-amber-100">
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold text-amber-800 uppercase tracking-widest bg-white px-3 py-1 rounded-full">
+                Perjalanan Member
+            </span>
+
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3">
+                Bisa Berkembang dari Reseller ke Distributor
+            </h2>
+
+            <p class="text-slate-600 text-sm mt-2 max-w-3xl mx-auto">
+                Materi AFC membagi level kemitraan menjadi Reseller, Agent, dan Distributor berdasarkan paket serta volume bonus yang digunakan dalam compensation plan.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+            <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm flex flex-col">
+                
+                <div class="flex items-center justify-between mb-5">
+                    <span class="text-xs font-bold bg-slate-100 text-slate-700 px-3 py-1 rounded-full uppercase">
+                        Reseller
+                    </span>
+
+                    <span class="text-2xl">🌱</span>
+                </div>
+
+                <h3 class="text-xl font-extrabold text-slate-900 mb-2">
+                    Mulai Membangun Customer
+                </h3>
+
+                <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                    Level awal untuk mempelajari produk, melakukan pemasaran, mendapatkan customer, dan mulai membangun jaringan.
+                </p>
+
+                <button
+                    onclick="kirimWA('Informasi Bisnis Reseller AFC')"
+                    class="mt-auto w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 rounded-full text-sm transition shadow-sm"
+                >
+                    💬 Hubungi Kami
+                </button>
+
+            </div>
+
+
+            <div class="bg-white rounded-3xl p-7 border border-blue-200 shadow-sm flex flex-col">
+
+                <div class="flex items-center justify-between mb-5">
+                    <span class="text-xs font-bold bg-blue-50 text-blue-700 px-3 py-1 rounded-full uppercase">
+                        Agent
+                    </span>
+
+                    <span class="text-2xl">🚀</span>
+                </div>
+
+                <h3 class="text-xl font-extrabold text-slate-900 mb-2">
+                    Memperluas Aktivitas
+                </h3>
+
+                <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                    Volume paket lebih besar memberi ruang untuk mengembangkan aktivitas pemasaran dan jaringan sesuai compensation plan.
+                </p>
+
+                <button
+                    onclick="kirimWA('Informasi Bisnis Agent AFC')"
+                    class="mt-auto w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-full text-sm transition shadow-sm"
+                >
+                    💬 Hubungi Kami
+                </button>
+
+            </div>
+
+
+            <div class="bg-white rounded-3xl p-7 border-2 border-amber-400 shadow-xl flex flex-col">
+
+                <div class="flex items-center justify-between mb-5">
+                    <span class="text-xs font-bold bg-amber-100 text-amber-800 px-3 py-1 rounded-full uppercase">
+                        Distributor
+                    </span>
+
+                    <span class="text-2xl">🏆</span>
+                </div>
+
+                <h3 class="text-xl font-extrabold text-slate-900 mb-2">
+                    Fokus Mengembangkan Tim
+                </h3>
+
+                <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                    Posisi dengan volume paket dan potensi bonus yang lebih besar dalam materi compensation plan AFC.
+                </p>
+
+                <button
+                    onclick="kirimWA('Informasi Bisnis Distributor AFC')"
+                    class="mt-auto w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-full text-sm transition shadow-sm"
+                >
+                    💬 Hubungi Kami
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="max-w-6xl mx-auto px-4 py-16">
+
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold text-emerald-700 uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">
+                Cara Menjalankan Bisnis
+            </span>
+
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3">
+                Contoh Aktivitas yang Bisa Dilakukan Member
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="text-3xl mb-4">📲</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Digital & Social Media</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Membuat konten edukasi, membagikan pengalaman penggunaan, membangun database WhatsApp, dan mengarahkan calon customer ke halaman informasi atau konsultasi.
+                </p>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="text-3xl mb-4">👥</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Referral & Networking</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Memanfaatkan relasi pribadi, komunitas, dan jaringan sosial untuk menemukan calon customer maupun calon partner bisnis.
+                </p>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="text-3xl mb-4">🎓</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Edukasi Produk</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Mempelajari produk dan menjelaskan informasi yang tersedia secara bertanggung jawab kepada customer dan partner.
+                </p>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="text-3xl mb-4">🧭</div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Pendampingan Tim</h3>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Membantu partner memahami langkah awal, membangun aktivitas, dan berkembang bersama dalam struktur bisnis dua jalur.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="bg-slate-100 py-16 px-4">
+        <div class="max-w-5xl mx-auto">
+
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold text-purple-700 uppercase tracking-widest bg-purple-100 px-3 py-1 rounded-full">
+                    Apakah Cocok untuk Anda?
+                </span>
+
+                <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3">
+                    Bisnis Ini Membutuhkan Aktivitas
+                </h2>
+
+                <p class="text-slate-600 text-sm mt-2 max-w-2xl mx-auto">
+                    Bisnis dapat dijalankan fleksibel, tetapi tetap membutuhkan kemauan untuk belajar, memasarkan produk, membangun relasi, dan mengembangkan jaringan.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="bg-white rounded-3xl p-8 border border-emerald-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-emerald-800 mb-5">
+                        ✅ Cocok untuk Anda yang:
+                    </h3>
+
+                    <div class="space-y-3 text-sm text-slate-700">
+                        <p>✓ Mau belajar menjual dan memasarkan produk</p>
+                        <p>✓ Suka membangun relasi dan komunitas</p>
+                        <p>✓ Aktif menggunakan media sosial atau WhatsApp</p>
+                        <p>✓ Ingin membangun bisnis secara bertahap</p>
+                        <p>✓ Bersedia menjalankan aktivitas secara konsisten</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 border border-rose-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-rose-800 mb-5">
+                        ⚠️ Perlu Dipahami:
+                    </h3>
+
+                    <div class="space-y-3 text-sm text-slate-700">
+                        <p>• Bonus mengikuti compensation plan dan kualifikasi.</p>
+                        <p>• Hasil setiap member dapat berbeda.</p>
+                        <p>• Pendapatan bukan hasil otomatis hanya karena mendaftar.</p>
+                        <p>• Aktivitas penjualan dan pengembangan jaringan tetap diperlukan.</p>
+                        <p>• Angka penghasilan dalam materi merupakan potensi/ilustrasi.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="max-w-6xl mx-auto px-4 py-16">
+
+        <div class="text-center mb-12">
+            <span class="text-xs font-bold text-amber-700 uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">
+                Pilihan Kemitraan
+            </span>
+
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mt-3">
+                Pilih Level Awal Bisnis Anda
+            </h2>
+
+            <p class="text-slate-600 text-sm mt-2 max-w-3xl mx-auto">
+                Dalam materi AFC, tersedia tiga pilihan utama berdasarkan paket: Reseller, Agent, dan Distributor. Pilihan dapat disesuaikan dengan rencana dan kemampuan masing-masing.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm relative flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold bg-slate-100 text-slate-700 px-3 py-1 rounded-full uppercase">Paket Reseller</span>
+
+                    <h3 class="text-2xl font-extrabold text-slate-900 mt-4 mb-1">RUBY</h3>
+
+                    <div class="text-lg font-bold text-slate-500 mb-1">
+                        1 Paket <span class="text-sm font-medium">(2 Box)</span>
+                    </div>
+
+                    <div class="text-3xl font-black text-amber-600 mb-6">
+                        Rp 3.750.000
+                    </div>
+
+                    <div class="w-full aspect-square rounded-2xl overflow-hidden mb-8 border border-slate-100 shadow-inner bg-slate-50">
+                        <img src="member-ruby.jpeg" alt="Paket Ruby AFC" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+
+                <button
+                    onclick="kirimWA('Pendaftaran Paket RUBY')"
+                    class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 rounded-full text-sm transition shadow-sm"
+                >
+                    Konsultasi Paket Ruby
+                </button>
+            </div>
+
+
+            <div class="bg-white rounded-3xl p-8 border border-blue-200 shadow-sm relative flex flex-col justify-between">
+                <div>
+                    <span class="text-xs font-bold bg-blue-50 text-blue-700 px-3 py-1 rounded-full uppercase">Paket Agen</span>
+
+                    <h3 class="text-2xl font-extrabold text-slate-900 mt-4 mb-1">SAPPHIRE</h3>
+
+                    <div class="text-lg font-bold text-slate-500 mb-1">
+                        3 Paket <span class="text-sm font-medium">(6 Box)</span>
+                    </div>
+
+                    <div class="text-3xl font-black text-amber-600 mb-6">
+                        Rp 11.250.000
+                    </div>
+
+                    <div class="w-full aspect-square rounded-2xl overflow-hidden mb-8 border border-slate-100 shadow-inner bg-slate-50">
+                        <img src="member-sapphire.jpeg" alt="Paket Sapphire AFC" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+
+                <button
+                    onclick="kirimWA('Pendaftaran Paket SAPPHIRE')"
+                    class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 rounded-full text-sm transition shadow-sm"
+                >
+                    Konsultasi Paket Sapphire
+                </button>
+            </div>
+
+
+            <div class="bg-white rounded-3xl p-8 border-2 border-amber-500 shadow-xl relative flex flex-col justify-between transform md:-translate-y-2">
+
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-white font-extrabold text-[11px] uppercase tracking-wider px-4 py-1 rounded-full shadow-md">
+                    Paling Besar
+                </div>
+
+                <div>
+                    <span class="text-xs font-bold bg-amber-100 text-amber-800 px-3 py-1 rounded-full uppercase">Paket Distributor</span>
+
+                    <h3 class="text-2xl font-extrabold text-slate-900 mt-4 mb-1">DIAMOND</h3>
+
+                    <div class="text-lg font-bold text-slate-500 mb-1">
+                        6 Paket <span class="text-sm font-medium">(12 Box)</span>
+                    </div>
+
+                    <div class="text-3xl font-black text-amber-600 mb-6">
+                        Rp 22.500.000
+                    </div>
+
+                    <div class="w-full aspect-square rounded-2xl overflow-hidden mb-8 border border-amber-100 shadow-inner bg-amber-50">
+                        <img src="member-diamond.jpeg" alt="Paket Diamond AFC" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+
+                <button
+                    onclick="kirimWA('Pendaftaran Paket DIAMOND')"
+                    class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-full text-sm transition shadow-md"
+                >
+                    Konsultasi Paket Diamond
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="max-w-4xl mx-auto my-16 px-4">
+
+        <div class="bg-gradient-to-r from-blue-900 to-slate-900 text-white p-8 md:p-12 rounded-3xl text-center shadow-xl">
+
+            <h3 class="text-2xl md:text-3xl font-extrabold mb-3">
+                Mau Tahu Bisnis AFC Cocok untuk Anda?
+            </h3>
+
+            <p class="text-slate-300 text-sm md:text-base mb-8 max-w-xl mx-auto">
+                Konsultasikan level awal, cara pemasaran, sistem dua jalur, dan langkah yang bisa Anda mulai bersama mentor.
+            </p>
+
+            <button
+                onclick="kirimWA('Konsultasi Cara Menjalankan Bisnis AFC')"
+                class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base inline-flex items-center gap-2"
+            >
+                <span>💬 Konsultasi Bisnis via WhatsApp</span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="max-w-5xl mx-auto px-4 pb-16">
+
+        <div class="text-center mb-10">
+
+            <span class="text-xs font-bold text-purple-700 uppercase tracking-widest bg-purple-100 px-3 py-1 rounded-full">
+                FAQ Bisnis
+            </span>
+
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mt-3">
+                Pertanyaan yang Sering Ditanyakan
+            </h2>
+
+        </div>
+
+        <div class="space-y-4">
+
+            <details class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <summary class="font-bold text-slate-900 cursor-pointer">
+                    Apakah saya harus sudah punya pengalaman jualan?
+                </summary>
+
+                <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+                    Tidak dijelaskan sebagai syarat khusus dalam materi yang diberikan. Namun, aktivitas pemasaran, sponsorship, dan pengembangan jaringan tetap membutuhkan kemauan belajar dan konsistensi.
+                </p>
+            </details>
+
+            <details class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <summary class="font-bold text-slate-900 cursor-pointer">
+                    Apa itu BV dan BP?
+                </summary>
+
+                <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+                    Materi AFC menggunakan BV sebagai Bonus Volume dan BP sebagai Bonus Point dalam perhitungan compensation plan.
+                </p>
+            </details>
+
+            <details class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <summary class="font-bold text-slate-900 cursor-pointer">
+                    Apa bedanya Reseller, Agent, dan Distributor?
+                </summary>
+
+                <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+                    Ketiganya merupakan level kemitraan dengan paket dan volume yang berbeda dalam materi compensation plan AFC.
+                </p>
+            </details>
+
+            <details class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <summary class="font-bold text-slate-900 cursor-pointer">
+                    Apakah bonus otomatis didapat setelah mendaftar?
+                </summary>
+
+                <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+                    Tidak. Materi compensation plan mengaitkan bonus dengan aktivitas, volume, pairing, sponsorship, serta kualifikasi tertentu.
+                </p>
+            </details>
+
+            <details class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <summary class="font-bold text-slate-900 cursor-pointer">
+                    Bagaimana cara mulai membangun tim?
+                </summary>
+
+                <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+                    Mulai dari memahami produk, mengenalkan produk kepada customer, membangun relasi, melakukan sponsorship, dan membantu partner berkembang sesuai sistem bisnis dua jalur.
+                </p>
+            </details>
+
+        </div>
+
+        <div class="mt-10 text-center">
+
+            <p class="text-sm text-slate-600 mb-4">
+                Masih punya pertanyaan lain seputar bisnis dan membership AFC?
+            </p>
+
+            <a
+                href="pertanyaan.html"
+                class="inline-flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base"
+            >
+                ❓ Lihat Semua Pertanyaan & FAQ
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section class="bg-slate-900 text-slate-300 py-12 px-6 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            
+            <div>
+                <div class="text-white font-bold text-lg mb-3 tracking-wide flex items-center">
+                    <span class="text-green-500 mr-2">💬</span> Hubungi Kami
+                </div>
+                <p class="text-sm text-slate-400 mb-2">
+                    Punya pertanyaan seputar produk atau pendaftaran member? Silakan hubungi tim kami langsung via WhatsApp.
+                </p>
+                <p class="text-lg font-extrabold text-yellow-400 tracking-wider mb-3">
+                    0878-2841-2340
+                </p>
+                <button 
+                    onclick="kirimWA('Tanya Seputar Produk / Bisnis')" 
+                    class="inline-block bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-5 rounded-full text-xs transition shadow"
+                >
+                    Chat WhatsApp Sekarang
+                </button>
+            </div>
+
+            <div>
+                <div class="text-white font-bold text-lg mb-3 tracking-wide flex items-center">
+                    <span class="text-blue-400 mr-2">⚠️</span> Disclaimer
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Hasil yang dirasakan setiap individu dapat bervariasi tergantung pada kondisi metabolisme dan kesehatan tubuh masing-masing. Situs ini merupakan media informasi independen agen resmi dan bukan situs resmi korporat AFC Lifescience Japan.
+                </p>
+            </div>
+
+            <div>
+                <div class="text-white font-bold text-lg mb-3 tracking-wide flex items-center">
+                    <span class="text-purple-400 mr-2">🔒</span> Kebijakan Privasi
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Kami sangat menjaga kerahasiaan data pribadi Anda. Seluruh informasi nomor telepon atau data yang Anda masukkan hanya digunakan untuk keperluan konsultasi dan pemesanan produk dan tidak akan disebarluaskan kepada pihak ketiga.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-slate-100 py-8 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 AFC Selling Candle. All rights reserved.</p>
+    </footer>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        <button 
+            onclick="kirimWA('Konsultasi dari Halaman Bisnis')" 
+            class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
+        >
+            <img src="wa-icon.png" alt="WhatsApp" class="w-10 h-10 object-contain">
+        </button>
+    </div>
+
+    <script>
+        // 1. Dynamic Text Replacement (DTR)
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const rawKeyword = params.get('keyword') || params.get('utm_term');
+            
+            if (rawKeyword) {
+                const keyword = decodeURIComponent(rawKeyword).replace(/\+/g, ' ');
+                const headline = document.getElementById('dynamic-headline');
+                if (headline) {
+                    headline.innerText = `Peluang Bisnis & Member AFC (${keyword})`;
+                }
+            }
+        });
+
+        // 2. Logika Petunjuk Tutorial Awal (LocalStorage)
+        window.addEventListener('DOMContentLoaded', () => {
+            const sudahPernahBuka = localStorage.getItem('afcMenuTutorialDone');
+            
+            if (!sudahPernahBuka) {
+                const tutorial = document.getElementById('menu-tutorial');
+                if (tutorial) {
+                    setTimeout(() => {
+                        tutorial.classList.remove('hidden');
+                    }, 1000);
+                }
+            }
+        });
+
+        function tutupTutorial() {
+            const tutorial = document.getElementById('menu-tutorial');
+            if (tutorial) {
+                tutorial.classList.add('hidden');
+            }
+            localStorage.setItem('afcMenuTutorialDone', 'true');
+        }
+
+        // 3. Toggle Mobile Navigation Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+
+            menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+
+            tutupTutorial();
+        }
+
+        // 4. Redirect WhatsApp
+        function kirimWA(topik) {
+            const params = new URLSearchParams(window.location.search);
+            const utmSource = params.get('utm_source') || 'Google Ads Bisnis';
+            const rawKeyword = params.get('keyword') || params.get('utm_term') || 'Pencarian Bisnis AFC';
+            const keyword = decodeURIComponent(rawKeyword).replace(/\+/g, ' ');
+            
+            const nomorWA = "6287828412340"; 
+            const pesan = `Halo, saya tertarik dengan ${topik} di Halaman Bisnis AFC. Tolong beri info lengkapnya. (Sumber: ${utmSource} - Keyword: ${keyword})`;
+            const finalUrl = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+            
+            window.open(finalUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>
