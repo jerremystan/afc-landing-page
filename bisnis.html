@@ -173,12 +173,14 @@
                     </div>
                 </div>
 
-                <button
-                    onclick="kirimWA('Pendaftaran Paket RUBY')"
-                    class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 rounded-full text-sm transition shadow-sm"
+                <a
+                    id="btn-ruby"
+                    href="#"
+                    target="_blank"
+                    class="w-full block text-center bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 rounded-full text-sm transition shadow-sm"
                 >
-                    Konsultasi Paket Ruby
-                </button>
+                    Beli Paket Ruby
+                </a>
             </div>
 
             <!-- Paket Sapphire -->
@@ -201,12 +203,14 @@
                     </div>
                 </div>
 
-                <button
-                    onclick="kirimWA('Pendaftaran Paket SAPPHIRE')"
-                    class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 rounded-full text-sm transition shadow-sm"
+                <a
+                    id="btn-sapphire"
+                    href="#"
+                    target="_blank"
+                    class="w-full block text-center bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 rounded-full text-sm transition shadow-sm"
                 >
-                    Konsultasi Paket Sapphire
-                </button>
+                    Beli Paket Sapphire
+                </a>
             </div>
 
             <!-- Paket Diamond -->
@@ -234,12 +238,14 @@
                     </div>
                 </div>
 
-                <button
-                    onclick="kirimWA('Pendaftaran Paket DIAMOND')"
-                    class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-full text-sm transition shadow-md"
+                <a
+                    id="btn-diamond"
+                    href="#"
+                    target="_blank"
+                    class="w-full block text-center bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-full text-sm transition shadow-md"
                 >
-                    Konsultasi Paket Diamond
-                </button>
+                    Beli Paket Diamond
+                </a>
             </div>
 
         </div>
@@ -316,35 +322,50 @@
     </div>
 
     <script>
-        // 1. Fetch Harga dari harga.json secara Dinamis
+        // Fetch Harga dari harga.json & Link Google Form dari preform.json Secara Bersamaan
         document.addEventListener("DOMContentLoaded", () => {
-            fetch('harga.json')
-                .then(response => response.json())
-                .then(data => {
-                    // Fungsi formatter rupiah
-                    const formatRupiah = (angka) => {
-                        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
-                    };
+            Promise.all([
+                fetch('harga.json').then(res => res.json()),
+                fetch('preform.json').then(res => res.json())
+            ])
+            .then(([hargaData, preformData]) => {
+                const formatRupiah = (angka) => {
+                    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+                };
 
-                    // Update Ruby
-                    if (data.ruby) {
-                        const elPriceRuby = document.getElementById('price-ruby');
-                        if (elPriceRuby) elPriceRuby.innerText = formatRupiah(data.ruby);
-                    }
-                    // Update Sapphire
-                    if (data.sapphire) {
-                        const elPriceSapphire = document.getElementById('price-sapphire');
-                        if (elPriceSapphire) elPriceSapphire.innerText = formatRupiah(data.sapphire);
-                    }
-                    // Update Diamond
-                    if (data.diamond) {
-                        const elPriceDiamond = document.getElementById('price-diamond');
-                        if (elPriceDiamond) elPriceDiamond.innerText = formatRupiah(data.diamond);
-                    }
-                })
-                .catch(error => {
-                    console.error('Gagal memuat data harga:', error);
-                });
+                // Update Ruby
+                if (hargaData.ruby) {
+                    const elPriceRuby = document.getElementById('price-ruby');
+                    if (elPriceRuby) elPriceRuby.innerText = formatRupiah(hargaData.ruby);
+                }
+                if (preformData.ruby) {
+                    const btnRuby = document.getElementById('btn-ruby');
+                    if (btnRuby) btnRuby.href = preformData.ruby + hargaData.ruby;
+                }
+
+                // Update Sapphire
+                if (hargaData.sapphire) {
+                    const elPriceSapphire = document.getElementById('price-sapphire');
+                    if (elPriceSapphire) elPriceSapphire.innerText = formatRupiah(hargaData.sapphire);
+                }
+                if (preformData.sapphire) {
+                    const btnSapphire = document.getElementById('btn-sapphire');
+                    if (btnSapphire) btnSapphire.href = preformData.sapphire + hargaData.sapphire;
+                }
+
+                // Update Diamond
+                if (hargaData.diamond) {
+                    const elPriceDiamond = document.getElementById('price-diamond');
+                    if (elPriceDiamond) elPriceDiamond.innerText = formatRupiah(hargaData.diamond);
+                }
+                if (preformData.diamond) {
+                    const btnDiamond = document.getElementById('btn-diamond');
+                    if (btnDiamond) btnDiamond.href = preformData.diamond + hargaData.diamond;
+                }
+            })
+            .catch(error => {
+                console.error('Gagal memuat data harga atau preform:', error);
+            });
         });
 
         // 2. Dynamic Text Replacement (DTR)
