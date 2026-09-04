@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6QEHVVTHZ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5QGKWNLG');</script>
+    <!-- End Google Tag Manager -->
 
-        gtag('config', 'G-W6QEHVVTHZ');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distributor AFC Resmi Indonesia | Produk AFC Life Science Jepang</title>
@@ -64,7 +63,11 @@
 
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
-    
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QGKWNLG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+     
     <header class="bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm relative">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center relative">
             <div class="flex items-center">
@@ -230,10 +233,10 @@
                     </div>
                     <div>
                         <div class="mb-4 text-center bg-blue-50 p-2 rounded-xl border border-blue-100">
-                            <span class="text-lg font-extrabold text-blue-900">Rp 1.950.000</span>
+                            <span id="harga-sop" class="text-lg font-extrabold text-blue-900">Rp ...</span>
                             <span class="text-[10px] text-slate-500 block mt-0.5">/ box (28 sachet)</span>
                         </div>
-                        <button onclick="kirimWA('SOP Subarashi (Satuan)')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #231A91;">
+                        <button onclick="bukaForm('sop')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #231A91;">
                             Pesan Satuan
                         </button>
                     </div>
@@ -261,10 +264,10 @@
                     </div>
                     <div>
                         <div class="mb-4 text-center bg-purple-50 p-2 rounded-xl border border-purple-100">
-                            <span class="text-lg font-extrabold text-purple-900">Rp 1.800.000</span>
+                            <span id="harga-utsu" class="text-lg font-extrabold text-purple-900">Rp ...</span>
                             <span class="text-[10px] text-slate-500 block mt-0.5">/ box (28 sachet)</span>
                         </div>
-                        <button onclick="kirimWA('Utsukushhii (Satuan)')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #A82C8D;">
+                        <button onclick="bukaForm('utsu')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #A82C8D;">
                             Pesan Satuan
                         </button>
                     </div>
@@ -292,10 +295,10 @@
                     </div>
                     <div>
                         <div class="mb-4 text-center bg-orange-50 p-2 rounded-xl border border-orange-100">
-                            <span class="text-lg font-extrabold text-orange-900">Rp 1.800.000</span>
+                            <span id="harga-hikari" class="text-lg font-extrabold text-orange-900">Rp ...</span>
                             <span class="text-[10px] text-slate-500 block mt-0.5">/ box (28 sachet)</span>
                         </div>
-                        <button onclick="kirimWA('Hikari (Satuan)')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #d9776b;">
+                        <button onclick="bukaForm('hikari')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #d9776b;">
                             Pesan Satuan
                         </button>
                     </div>
@@ -323,10 +326,10 @@
                     </div>
                     <div>
                         <div class="mb-4 text-center bg-emerald-50 p-2 rounded-xl border border-emerald-100">
-                            <span class="text-lg font-extrabold text-emerald-900">Rp 3.500.000</span>
+                            <span id="harga-sensei" class="text-lg font-extrabold text-emerald-900">Rp ...</span>
                             <span class="text-[10px] text-slate-500 block mt-0.5">/ botol (50ml)</span>
                         </div>
-                        <button onclick="kirimWA('Sensei Suru (Satuan)')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #0f766e;">
+                        <button onclick="bukaForm('sensei')" class="w-full text-white text-sm font-bold py-2.5 px-4 rounded-xl shadow transition text-center hover:opacity-90" style="background-color: #0f766e;">
                             Pesan Satuan
                         </button>
                     </div>
@@ -419,11 +422,11 @@
                             Paket keanggotaan dasar AFC untuk memulai konsumsi rutin dengan harga resmi serta hak akses bisnis level awal.
                         </p>
                         <div class="mb-6 text-center bg-red-50 p-3 rounded-xl border border-red-100">
-                            <span class="text-xl font-extrabold text-red-800">Rp 3.750.000</span>
+                            <span id="harga-ruby" class="text-xl font-extrabold text-red-800">Rp ...</span>
                         </div>
                     </div>
                     <button 
-                        onclick="kirimWA('Paket Member Ruby')"
+                        onclick="bukaForm('ruby')"
                         class="w-full text-white font-bold py-3 px-4 rounded-xl shadow transition text-center hover:opacity-90"
                         style="background-color: #990000;"
                     >
@@ -449,11 +452,11 @@
                             Paket menengah dengan keuntungan bonus jaringan lebih besar dan jumlah produk lebih banyak untuk terapi keluarga.
                         </p>
                         <div class="mb-6 text-center bg-blue-50 p-3 rounded-xl border border-blue-100">
-                            <span class="text-xl font-extrabold text-blue-900">Rp 11.250.000</span>
+                            <span id="harga-sapphire" class="text-xl font-extrabold text-blue-900">Rp ...</span>
                         </div>
                     </div>
                     <button 
-                        onclick="kirimWA('Paket Member Sapphire')"
+                        onclick="bukaForm('sapphire')"
                         class="w-full text-white font-bold py-3 px-4 rounded-xl shadow transition text-center hover:opacity-90"
                         style="background-color: #1a237e;"
                     >
@@ -479,11 +482,11 @@
                             Paket tertinggi dengan hak istimewa penuh, potensi komisi maksimal, dan stok produk melimpah untuk Leader profesional.
                         </p>
                         <div class="mb-6 text-center bg-slate-100 p-3 rounded-xl border border-slate-200">
-                            <span class="text-xl font-extrabold text-slate-900">Rp 22.500.000</span>
+                            <span id="harga-diamond" class="text-xl font-extrabold text-slate-900">Rp ...</span>
                         </div>
                     </div>
                     <button 
-                        onclick="kirimWA('Paket Member Diamond')"
+                        onclick="bukaForm('diamond')"
                         class="w-full text-white font-bold py-3 px-4 rounded-xl shadow transition text-center hover:opacity-90 bg-slate-800 hover:bg-slate-700"
                     >
                         Pilih Paket Diamond
@@ -971,6 +974,13 @@
 
         // Fungsi Kirim WhatsApp dengan Tracking Keyword & UTM
         function kirimWA(namaProduk) {
+            // Baris pelacakan GTM DataLayer yang benar
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'track_whatsapp',
+                'topik_wa': namaProduk
+            });
+            
             const params = new URLSearchParams(window.location.search);
             const utmSource = params.get('utm_source') || 'Google Ads Utama';
             const rawKeyword = params.get('keyword') || params.get('utm_term') || 'Pencarian Umum';
@@ -978,7 +988,6 @@
             
             const nomorWA = "6285187721970"; 
             
-            // Format pesan yang masuk ke WhatsApp lu secara natural dan profesional
             const pesan = `Halo, saya menemukan info dari pencarian "${keyword}". Saya ingin konsultasi dan pemesanan ${namaProduk}. (Sumber: ${utmSource})`;
             const finalUrl = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
             
@@ -1037,6 +1046,52 @@
         tutupTutorial();
     }
 
+    </script>
+
+    <script>
+        fetch('harga.json')
+            .then(response => response.json())
+            .then(data => {
+            // Fungsi untuk mengubah angka jadi format Rp (contoh: 1950000 -> Rp 1.950.000)
+            const formatRupiah = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
+
+            // Suntikkan harga ke masing-masing elemen HTML
+            document.getElementById('harga-sop').innerText = formatRupiah(data.sop);
+            document.getElementById('harga-utsu').innerText = formatRupiah(data.utsu);
+            document.getElementById('harga-hikari').innerText = formatRupiah(data.hikari);
+            document.getElementById('harga-sensei').innerText = formatRupiah(data.sensei);
+            
+            document.getElementById('harga-ruby').innerText = formatRupiah(data.ruby);
+            document.getElementById('harga-sapphire').innerText = formatRupiah(data.sapphire);
+            document.getElementById('harga-diamond').innerText = formatRupiah(data.diamond);
+            })
+            .catch(error => console.error('Gagal mengambil data harga:', error));
+    </script>
+
+    <script>
+        function bukaForm(jenisProduk) {
+            // 1. Langsung buka tab kosong saat tombol diklik (biar lolos dari Pop-up Blocker)
+            const tabBaru = window.open('about:blank', '_blank');
+
+            fetch('preform.json')
+                .then(response => response.json())
+                .then(data => {
+                    let urlTujuan = data[jenisProduk];
+                    
+                    // Tambahkan angka 1 di belakang URL jika bukan 'blank'
+                    if (jenisProduk !== 'blank') {
+                        urlTujuan += '1';
+                    }
+                    
+                    // 2. Isi tab kosong tadi dengan link Google Form
+                    tabBaru.location.href = urlTujuan;
+                })
+                .catch(error => {
+                    console.error('Gagal mengambil data form:', error);
+                    tabBaru.close(); // Tutup tab kalau error
+                    alert("Gagal memuat link form, pastikan koneksi internet stabil.");
+                });
+        }
     </script>
 
 </body>
