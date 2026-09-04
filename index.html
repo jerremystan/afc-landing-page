@@ -1070,7 +1070,14 @@
 
     <script>
         function bukaForm(jenisProduk) {
-            // 1. Langsung buka tab kosong saat tombol diklik (biar lolos dari Pop-up Blocker)
+            // 1. Catat event ke GTM DataLayer
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'track_whatsapp',
+                'topik_wa': jenisProduk
+            });
+
+            // 2. Langsung buka tab kosong duluan agar lolos dari Pop-up Blocker browser
             const tabBaru = window.open('about:blank', '_blank');
 
             fetch('preform.json')
@@ -1078,17 +1085,16 @@
                 .then(data => {
                     let urlTujuan = data[jenisProduk];
                     
-                    // Tambahkan angka 1 di belakang URL jika bukan 'blank'
                     if (jenisProduk !== 'blank') {
                         urlTujuan += '1';
                     }
                     
-                    // 2. Isi tab kosong tadi dengan link Google Form
+                    // 3. Arahkan tab kosong ke URL tujuan
                     tabBaru.location.href = urlTujuan;
                 })
                 .catch(error => {
                     console.error('Gagal mengambil data form:', error);
-                    tabBaru.close(); // Tutup tab kalau error
+                    tabBaru.close();
                     alert("Gagal memuat link form, pastikan koneksi internet stabil.");
                 });
         }
