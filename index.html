@@ -1069,15 +1069,14 @@
     </script>
 
     <script>
+        // Fungsi untuk tombol Pesan Produk Satuan & Member
         function bukaForm(jenisProduk) {
-            // 1. Catat event ke GTM DataLayer
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'track_whatsapp',
+                'event': 'form_submit', // Event khusus submit form/pembelian produk
                 'topik_wa': jenisProduk
             });
 
-            // 2. Langsung buka tab kosong duluan agar lolos dari Pop-up Blocker browser
             const tabBaru = window.open('about:blank', '_blank');
 
             fetch('preform.json')
@@ -1089,7 +1088,6 @@
                         urlTujuan += '1';
                     }
                     
-                    // 3. Arahkan tab kosong ke URL tujuan
                     tabBaru.location.href = urlTujuan;
                 })
                 .catch(error => {
