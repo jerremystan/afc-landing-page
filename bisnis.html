@@ -160,7 +160,7 @@
 
                     <h3 class="text-2xl font-extrabold text-slate-900 mt-4 mb-1">RUBY</h3>
 
-                    <div class="text-lg font-bold text-slate-500 mb-1" id="desc-ruby">
+                    <div class="text-lg font-bold text-slate-500 mb-1">
                         1 Paket <span class="text-sm font-medium">(2 Box)</span>
                     </div>
 
@@ -188,7 +188,7 @@
 
                     <h3 class="text-2xl font-extrabold text-slate-900 mt-4 mb-1">SAPPHIRE</h3>
 
-                    <div class="text-lg font-bold text-slate-500 mb-1" id="desc-sapphire">
+                    <div class="text-lg font-bold text-slate-500 mb-1">
                         3 Paket <span class="text-sm font-medium">(6 Box)</span>
                     </div>
 
@@ -221,7 +221,7 @@
 
                     <h3 class="text-2xl font-extrabold text-slate-900 mt-4 mb-1">DIAMOND</h3>
 
-                    <div class="text-lg font-bold text-slate-500 mb-1" id="desc-diamond">
+                    <div class="text-lg font-bold text-slate-500 mb-1">
                         6 Paket <span class="text-sm font-medium">(12 Box)</span>
                     </div>
 
@@ -321,26 +321,25 @@
             fetch('harga.json')
                 .then(response => response.json())
                 .then(data => {
+                    // Fungsi formatter rupiah
+                    const formatRupiah = (angka) => {
+                        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+                    };
+
                     // Update Ruby
                     if (data.ruby) {
-                        const elDescRuby = document.getElementById('desc-ruby');
                         const elPriceRuby = document.getElementById('price-ruby');
-                        if (elDescRuby && data.ruby.keterangan) elDescRuby.innerHTML = data.ruby.keterangan;
-                        if (elPriceRuby && data.ruby.harga) elPriceRuby.innerText = data.ruby.harga;
+                        if (elPriceRuby) elPriceRuby.innerText = formatRupiah(data.ruby);
                     }
                     // Update Sapphire
                     if (data.sapphire) {
-                        const elDescSapphire = document.getElementById('desc-sapphire');
                         const elPriceSapphire = document.getElementById('price-sapphire');
-                        if (elDescSapphire && data.sapphire.keterangan) elDescSapphire.innerHTML = data.sapphire.keterangan;
-                        if (elPriceSapphire && data.sapphire.harga) elPriceSapphire.innerText = data.sapphire.harga;
+                        if (elPriceSapphire) elPriceSapphire.innerText = formatRupiah(data.sapphire);
                     }
                     // Update Diamond
                     if (data.diamond) {
-                        const elDescDiamond = document.getElementById('desc-diamond');
                         const elPriceDiamond = document.getElementById('price-diamond');
-                        if (elDescDiamond && data.diamond.keterangan) elDescDiamond.innerHTML = data.diamond.keterangan;
-                        if (elPriceDiamond && data.diamond.harga) elPriceDiamond.innerText = data.diamond.harga;
+                        if (elPriceDiamond) elPriceDiamond.innerText = formatRupiah(data.diamond);
                     }
                 })
                 .catch(error => {
