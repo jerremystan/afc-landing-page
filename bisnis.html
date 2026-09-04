@@ -275,7 +275,7 @@
                     <span class="text-green-500 mr-2">💬</span> Hubungi Kami
                 </div>
                 <p class="text-sm text-slate-400 mb-2">
-                    Punya pertanyaan seputar produk atau pendaftaran member? Silakan hubungi tim kami langsung via WhatsApp.
+                    Punya pertanyaan seputar produk atau pendaftaran member? Silخاب hubungi tim kami langsung via WhatsApp.
                 </p>
                 <p class="text-lg font-extrabold text-yellow-400 tracking-wider mb-3">
                     0851-8772-1970
@@ -333,34 +333,34 @@
                     return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
                 };
 
-                // Update Ruby
+                // Update Ruby (Harga + Link Form diconcat dengan angka '1')
                 if (hargaData.ruby) {
                     const elPriceRuby = document.getElementById('price-ruby');
                     if (elPriceRuby) elPriceRuby.innerText = formatRupiah(hargaData.ruby);
                 }
                 if (preformData.ruby) {
                     const btnRuby = document.getElementById('btn-ruby');
-                    if (btnRuby) btnRuby.href = preformData.ruby + hargaData.ruby;
+                    if (btnRuby) btnRuby.href = preformData.ruby + '1';
                 }
 
-                // Update Sapphire
+                // Update Sapphire (Harga + Link Form diconcat dengan angka '1')
                 if (hargaData.sapphire) {
                     const elPriceSapphire = document.getElementById('price-sapphire');
                     if (elPriceSapphire) elPriceSapphire.innerText = formatRupiah(hargaData.sapphire);
                 }
                 if (preformData.sapphire) {
                     const btnSapphire = document.getElementById('btn-sapphire');
-                    if (btnSapphire) btnSapphire.href = preformData.sapphire + hargaData.sapphire;
+                    if (btnSapphire) btnSapphire.href = preformData.sapphire + '1';
                 }
 
-                // Update Diamond
+                // Update Diamond (Harga + Link Form diconcat dengan angka '1')
                 if (hargaData.diamond) {
                     const elPriceDiamond = document.getElementById('price-diamond');
                     if (elPriceDiamond) elPriceDiamond.innerText = formatRupiah(hargaData.diamond);
                 }
                 if (preformData.diamond) {
                     const btnDiamond = document.getElementById('btn-diamond');
-                    if (btnDiamond) btnDiamond.href = preformData.diamond + hargaData.diamond;
+                    if (btnDiamond) btnDiamond.href = preformData.diamond + '1';
                 }
             })
             .catch(error => {
