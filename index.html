@@ -87,7 +87,7 @@
                 </button>
             </div>
 
-            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 transition-all duration-300 z-50 origin-top-right">
+            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 transition-all duration-300 z-50 origin-top-right">
                 <div class="flex flex-col space-y-2">
                     <a href="index.html" onclick="toggleMobileMenu()" class="block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm">
                         🏠 Beranda
@@ -106,6 +106,10 @@
                     </a>
                     <a href="pertanyaan.html" onclick="toggleMobileMenu()" class="block bg-purple-50 hover:bg-purple-100 text-purple-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
                         ❓ FAQ
+                    </a>
+                    <!-- Menu Hubungi JEMY (VA) -->
+                    <a href="chat.html" onclick="toggleMobileMenu()" class="block bg-teal-100 hover:bg-teal-200 text-teal-800 font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm">
+                        🤖 Hubungi JEMY (VA)
                     </a>
                 </div>
             </div>
@@ -129,15 +133,13 @@
                 Lihat Pilihan Produk
             </a>
 
-            <button 
-                onclick="kirimWA('Umum Produk AFC')"
+            <a 
+                href="chat.html"
                 class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2"
             >
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-                </svg>
-                <span>Konsultasi Gratis</span>
-            </button>
+                <span class="text-xl leading-none">🤖</span>
+                <span>Konsultasi Gratis (JEMY VA)</span>
+            </a>
         </div>
 
         <div class="max-w-4xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -255,7 +257,7 @@
                 <div class="p-5 flex-grow flex flex-col justify-between">
                     <div>
                         <p class="text-gray-600 text-xs mb-4">
-                            Terapi peremajaan usus (Marine Placenta & Tri-peptide) yang berfungsi meningkatkan daya tahan tubuh serta membantu melawan sel-sel tumor/kanker.
+                            Terapi peremajaan usus (Marine Placenta & Tri-peptide) yang berfungsi meningkatkan daya tahan tubuh serta melawan sel-sel tumor/kanker.
                         </p>
                         <ul class="text-[11px] text-gray-500 space-y-1.5 mb-4">
                             <li>✔️ Paten Anti-Tumor Agent & Imunomodulator</li>
@@ -348,7 +350,6 @@
             modalImage.src = imageSrc;
             modal.classList.remove('hidden');
             
-            // Animasi pop-in (zoom lembut)
             setTimeout(() => {
                 modalContent.classList.remove('scale-95');
                 modalContent.classList.add('scale-100');
@@ -359,17 +360,15 @@
             const modal = document.getElementById('image-modal');
             const modalContent = document.getElementById('modal-content');
             
-            // Animasi pop-out (zoom out lembut)
             modalContent.classList.remove('scale-100');
             modalContent.classList.add('scale-95');
             
             setTimeout(() => {
                 modal.classList.add('hidden');
-                document.getElementById('modal-image').src = ""; // Bersihkan gambar
+                document.getElementById('modal-image').src = "";
             }, 200);
         }
 
-        // Fungsi canggih: Tutup modal otomatis kalau orang ngeklik area hitam di luar gambar
         document.getElementById('image-modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeImageModal();
@@ -638,12 +637,13 @@
             </div>
 
             <div class="text-center">
-                <button 
-                    onclick="kirimWA('Umum Produk AFC')"
-                    class="inline-block bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:-translate-y-1 text-base md:text-lg"
+                <a 
+                    href="chat.html"
+                    class="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:-translate-y-1 text-base md:text-lg"
                 >
-                    💬 Hubungi Kami
-                </button>
+                    <span class="text-xl leading-none">🤖</span>
+                    <span>Hubungi JEMY (VA)</span>
+                </a>
             </div>
         </div>
     </section>
@@ -837,69 +837,69 @@
     </section>
 
     <section class="w-full bg-gradient-to-b from-blue-50 to-sky-100 py-16 px-6">
-    <div class="max-w-6xl mx-auto text-center">
-        <div class="inline-block bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 shadow-sm">
-            Distribusi Resmi & Terpercaya
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="inline-block bg-blue-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mb-3 shadow-sm">
+                Distribusi Resmi & Terpercaya
+            </div>
+            
+            <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-3">
+                Jaringan Stockist Resmi AFC
+            </h2>
+            
+            <p class="text-slate-700 text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-10">
+                Kami siap melayani pengiriman produk original dengan jaminan keamanan dan kecepatan ke seluruh penjuru wilayah nusantara.
+            </p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-12">
+                <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm md:text-base">Jawa</h3>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm md:text-base">Bali & Lombok</h3>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm md:text-base">Sumatera</h3>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm md:text-base">Kalimantan</h3>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm md:text-base">Sulawesi</h3>
+                </div>
+
+                <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-sm md:text-base">Papua</h3>
+                </div>
+            </div>
+
+            <div class="bg-blue-600 text-white py-4 px-6 rounded-2xl shadow-md flex items-center justify-center gap-3 max-w-xl mx-auto transform hover:scale-105 transition duration-300">
+                <svg class="w-7 h-7 text-blue-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                <span class="font-extrabold text-base md:text-lg tracking-wider uppercase">FREE ONGKIR KE SELURUH INDONESIA!</span>
+            </div>
         </div>
-        
-        <h2 class="text-2xl md:text-4xl font-extrabold text-slate-900 mb-3">
-            Jaringan Stockist Resmi AFC
-        </h2>
-        
-        <p class="text-slate-700 text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-10">
-            Kami siap melayani pengiriman produk original dengan jaminan keamanan dan kecepatan ke seluruh penjuru wilayah nusantara.
-        </p>
-
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-12">
-            <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm md:text-base">Jawa</h3>
-            </div>
-
-            <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm md:text-base">Bali & Lombok</h3>
-            </div>
-
-            <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm md:text-base">Sumatera</h3>
-            </div>
-
-            <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm md:text-base">Kalimantan</h3>
-            </div>
-
-            <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm md:text-base">Sulawesi</h3>
-            </div>
-
-            <div class="bg-white/80 backdrop-blur-sm p-5 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md hover:bg-white transition flex flex-col items-center justify-center group">
-                <div class="w-12 h-12 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </div>
-                <h3 class="font-bold text-slate-900 text-sm md:text-base">Papua</h3>
-            </div>
-        </div>
-
-        <div class="bg-blue-600 text-white py-4 px-6 rounded-2xl shadow-md flex items-center justify-center gap-3 max-w-xl mx-auto transform hover:scale-105 transition duration-300">
-            <svg class="w-7 h-7 text-blue-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-            <span class="font-extrabold text-base md:text-lg tracking-wider uppercase">FREE ONGKIR KE SELURUH INDONESIA!</span>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section class="bg-slate-900 text-slate-300 py-12 px-6 border-t border-slate-800">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
@@ -912,10 +912,10 @@
                     Punya pertanyaan seputar produk atau pendaftaran member? Silakan hubungi tim kami langsung via WhatsApp.
                 </p>
                 <p class="text-lg font-extrabold text-yellow-400 tracking-wider mb-3">
-                    0851-8772-1970
+                    0878-2841-2340
                 </p>
                 <a 
-                    href="https://wa.me/6285187721970?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20produk%20AFC." 
+                    href="https://wa.me/6287828412340?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20produk%20AFC." 
                     target="_blank"
                     class="inline-block bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-5 rounded-full text-xs transition shadow"
                 >
@@ -944,17 +944,18 @@
         </div>
     </section>
 
+    <!-- Tombol Mengambang (Floating Button) Mengarah ke JEMY (VA) dengan Ikon Emoji Robot -->
     <div class="fixed bottom-6 right-6 z-50">
-        <button 
-            onclick="kirimWA('Umum Produk AFC')" 
+        <a 
+            href="chat.html"
             class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
         >
-        <img src="wa-icon.png" alt="WhatsApp" class="w-10 h-10 object-contain">
-        </button>
+        <span class="text-3xl leading-none">🤖</span>
+        </a>
     </div>
 
     <footer class="bg-white border-t border-slate-100 py-8 text-center text-slate-500 text-sm mt-12">
-        <p>&copy; 2026 AFC Selling Candle. All rights reserved.</p>
+        <p>&copy; 2026 AFC Bright Candle. All rights reserved.</p>
     </footer>
     
     <script>
@@ -971,28 +972,6 @@
                 }
             }
         });
-
-        // Fungsi Kirim WhatsApp dengan Tracking Keyword & UTM
-        function kirimWA(namaProduk) {
-            // Baris pelacakan GTM DataLayer yang benar
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'track_whatsapp',
-                'topik_wa': namaProduk
-            });
-            
-            const params = new URLSearchParams(window.location.search);
-            const utmSource = params.get('utm_source') || 'Google Ads Utama';
-            const rawKeyword = params.get('keyword') || params.get('utm_term') || 'Pencarian Umum';
-            const keyword = decodeURIComponent(rawKeyword).replace(/\+/g, ' ');
-            
-            const nomorWA = "6285187721970"; 
-            
-            const pesan = `Halo, saya menemukan info dari pencarian "${keyword}". Saya ingin konsultasi dan pemesanan ${namaProduk}. (Sumber: ${utmSource})`;
-            const finalUrl = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
-            
-            window.open(finalUrl, '_blank');
-        }
         
         // Fitur Pop-up / Lightbox Sertifikat
         function bukaSertifikat(srcGambar) {
@@ -1008,13 +987,11 @@
         // LOGIKA TUTORIAL KUNJUNGAN PERTAMA KALI
         // ==========================================
         window.addEventListener('DOMContentLoaded', () => {
-            // Cek apakah pengunjung sudah pernah buka & menutup tutorial
             const sudahPernahBuka = localStorage.getItem('afcMenuTutorialDone');
             
             if (!sudahPernahBuka) {
                 const tutorial = document.getElementById('menu-tutorial');
                 if (tutorial) {
-                    // Beri jeda 1 detik setelah web selesai dimuat baru petunjuknya muncul
                     setTimeout(() => {
                         tutorial.classList.remove('hidden');
                     }, 1000);
@@ -1027,74 +1004,64 @@
             if (tutorial) {
                 tutorial.classList.add('hidden');
             }
-            // Simpan ingatan ke browser pengunjung bahwa mereka sudah paham
             localStorage.setItem('afcMenuTutorialDone', 'true');
         }
 
         function toggleMobileMenu() {
-        const menu = document.getElementById('mobile-menu');
-        const iconOpen = document.getElementById('icon-open');
-        const iconClose = document.getElementById('icon-close');
+            const menu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
 
-        // Buka/tutup dropdown
-        menu.classList.toggle('hidden');
-        
-        // Ubah ikon dari 3 garis jadi silang (X)
-        iconOpen.classList.toggle('hidden');
-        iconClose.classList.toggle('hidden');
+            menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
 
-        tutupTutorial();
-    }
-
+            tutupTutorial();
+        }
     </script>
 
     <script>
-        fetch('harga.json')
-            .then(response => response.json())
-            .then(data => {
-            // Fungsi untuk mengubah angka jadi format Rp (contoh: 1950000 -> Rp 1.950.000)
-            const formatRupiah = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
+        let preformUrls = {};
 
-            // Suntikkan harga ke masing-masing elemen HTML
-            document.getElementById('harga-sop').innerText = formatRupiah(data.sop);
-            document.getElementById('harga-utsu').innerText = formatRupiah(data.utsu);
-            document.getElementById('harga-hikari').innerText = formatRupiah(data.hikari);
-            document.getElementById('harga-sensei').innerText = formatRupiah(data.sensei);
-            
-            document.getElementById('harga-ruby').innerText = formatRupiah(data.ruby);
-            document.getElementById('harga-sapphire').innerText = formatRupiah(data.sapphire);
-            document.getElementById('harga-diamond').innerText = formatRupiah(data.diamond);
+        // Fetch Harga dari harga.json & Link Google Form dari preform.json Secara Bersamaan
+        document.addEventListener("DOMContentLoaded", () => {
+            Promise.all([
+                fetch('harga.json').then(res => res.json()),
+                fetch('preform.json').then(res => res.json())
+            ])
+            .then(([hargaData, preformData]) => {
+                const formatRupiah = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
+
+                // Harga Produk Satuan
+                if (hargaData.sop) document.getElementById('harga-sop').innerText = formatRupiah(hargaData.sop);
+                if (hargaData.utsu) document.getElementById('harga-utsu').innerText = formatRupiah(hargaData.utsu);
+                if (hargaData.hikari) document.getElementById('harga-hikari').innerText = formatRupiah(hargaData.hikari);
+                if (hargaData.sensei) document.getElementById('harga-sensei').innerText = formatRupiah(hargaData.sensei);
+                
+                // Harga Paket Member
+                if (hargaData.ruby) document.getElementById('harga-ruby').innerText = formatRupiah(hargaData.ruby);
+                if (hargaData.sapphire) document.getElementById('harga-sapphire').innerText = formatRupiah(hargaData.sapphire);
+                if (hargaData.diamond) document.getElementById('harga-diamond').innerText = formatRupiah(hargaData.diamond);
+
+                // Simpan URL preform
+                preformUrls = preformData;
             })
-            .catch(error => console.error('Gagal mengambil data harga:', error));
-    </script>
+            .catch(error => console.error('Gagal mengambil data harga atau preform:', error));
+        });
 
-    <script>
-        // Fungsi untuk tombol Pesan Produk Satuan & Member
+        // Fungsi untuk tombol Pesan Produk Satuan & Member mengarah ke preform.json ditambah '1'
         function bukaForm(jenisProduk) {
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                'event': 'form_submit', // Event khusus submit form/pembelian produk
+                'event': 'form_submit',
                 'topik_wa': jenisProduk
             });
 
-            const tabBaru = window.open('about:blank', '_blank');
-
-            fetch('preform.json')
-                .then(response => response.json())
-                .then(data => {
-                    let urlTujuan = data[jenisProduk];
-                    
-                    if (jenisProduk !== 'blank') {
-                        urlTujuan += '1';
-                    }
-                    
-                    tabBaru.location.href = urlTujuan;
-                })
-                .catch(error => {
-                    console.error('Gagal mengambil data form:', error);
-                    tabBaru.close();
-                    alert("Gagal memuat link form, pastikan koneksi internet stabil.");
-                });
+            if (preformUrls[jenisProduk]) {
+                window.open(preformUrls[jenisProduk] + '1', '_blank');
+            } else {
+                console.warn('Link preform untuk ' + jenisProduk + ' tidak ditemukan.');
+            }
         }
     </script>
 

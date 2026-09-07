@@ -87,6 +87,10 @@
                     <a href="pertanyaan.html" class="block bg-purple-50 hover:bg-purple-100 text-purple-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
                         ❓ FAQ
                     </a>
+                    <!-- Menu Hubungi JEMY (VA) sesuai permintaan -->
+                    <a href="chat.html" class="block bg-teal-100 hover:bg-teal-200 text-teal-800 font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm flex items-center gap-2">
+                        <span>🤖</span> Hubungi JEMY (VA)
+                    </a>
                 </div>
             </div>
 
@@ -126,12 +130,12 @@
         </p>
 
         <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-            <button
-                onclick="kirimWA('Konsultasi Cara Menjalankan Bisnis AFC')"
+            <a
+                href="chat.html"
                 class="bg-green-500 hover:bg-green-400 text-white font-bold py-3.5 px-8 rounded-full shadow-xl transition transform hover:-translate-y-1 text-sm md:text-base flex items-center justify-center gap-2"
             >
-                <span>💬 Konsultasi Cara Memulai</span>
-            </button>
+                <span>🤖 Konsultasi Cara Memulai</span>
+            </a>
         </div>
     </section>
 
@@ -259,12 +263,12 @@
             <p class="text-slate-300 text-sm md:text-base mb-8 max-w-xl mx-auto">
                 Konsultasikan level awal, cara pemasaran, sistem dua jalur, dan langkah yang bisa Anda mulai bersama mentor.
             </p>
-            <button
-                onclick="kirimWA('Konsultasi Cara Menjalankan Bisnis AFC')"
+            <a
+                href="chat.html"
                 class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base inline-flex items-center gap-2"
             >
-                <span>💬 Konsultasi Bisnis via WhatsApp</span>
-            </button>
+                <span>🤖 Konsultasi Bisnis Sekarang</span>
+            </a>
         </div>
     </section>
 
@@ -275,17 +279,18 @@
                     <span class="text-green-500 mr-2">💬</span> Hubungi Kami
                 </div>
                 <p class="text-sm text-slate-400 mb-2">
-                    Punya pertanyaan seputar produk atau pendaftaran member? Silخاب hubungi tim kami langsung via WhatsApp.
+                    Punya pertanyaan seputar produk atau pendaftaran member? Silakan hubungi tim kami langsung via WhatsApp.
                 </p>
                 <p class="text-lg font-extrabold text-yellow-400 tracking-wider mb-3">
-                    0851-8772-1970
+                    0878-2841-2340
                 </p>
-                <button 
-                    onclick="kirimWA('Tanya Seputar Produk / Bisnis')" 
+                <a 
+                    href="https://wa.me/6287828412340?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20produk%20atau%20bisnis%20AFC." 
+                    target="_blank"
                     class="inline-block bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-5 rounded-full text-xs transition shadow"
                 >
                     Chat WhatsApp Sekarang
-                </button>
+                </a>
             </div>
 
             <div>
@@ -308,17 +313,19 @@
         </div>
     </section>
 
+    <!-- Hak Cipta diubah menjadi Bright Candle sesuai permintaan -->
     <footer class="bg-white border-t border-slate-100 py-8 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 AFC Selling Candle. All rights reserved.</p>
+        <p>&copy; 2026 AFC Bright Candle. All rights reserved.</p>
     </footer>
 
+    <!-- Tombol Mengambang (Floating Button) Mengarah ke JEMY (VA) dengan Ikon Emoji Robot -->
     <div class="fixed bottom-6 right-6 z-50">
-        <button 
-            onclick="kirimWA('Konsultasi dari Halaman Bisnis')" 
+        <a 
+            href="chat.html"
             class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
         >
-            <img src="wa-icon.png" alt="WhatsApp" class="w-10 h-10 object-contain">
-        </button>
+            <span class="text-3xl leading-none">🤖</span>
+        </a>
     </div>
 
     <script>
@@ -415,26 +422,6 @@
             iconClose.classList.toggle('hidden');
 
             tutupTutorial();
-        }
-
-        // 5. Redirect WhatsApp + GTM Tracking (`track_whatsapp`)
-        function kirimWA(topik) {
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'track_whatsapp',
-                'topik_wa': topik
-            });
-
-            const params = new URLSearchParams(window.location.search);
-            const utmSource = params.get('utm_source') || 'Google Ads Bisnis';
-            const rawKeyword = params.get('keyword') || params.get('utm_term') || 'Pencarian Bisnis AFC';
-            const keyword = decodeURIComponent(rawKeyword).replace(/\+/g, ' ');
-            
-            const nomorWA = "6285187721970"; 
-            const pesan = `Halo, saya tertarik dengan ${topik} di Halaman Bisnis AFC. Tolong beri info lengkapnya. (Sumber: ${utmSource} - Keyword: ${keyword})`;
-            const finalUrl = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
-            
-            window.open(finalUrl, '_blank');
         }
     </script>
 </body>

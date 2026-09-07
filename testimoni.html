@@ -196,6 +196,14 @@
                             ❓ FAQ
                         </a>
 
+                        <!-- Menu Hubungi JEMY (VA) -->
+                        <a
+                            href="chat.html"
+                            class="block bg-teal-100 hover:bg-teal-200 text-teal-800 font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm flex items-center gap-2"
+                        >
+                            <span>🤖</span> Hubungi JEMY (VA)
+                        </a>
+
                     </div>
                 </div>
 
@@ -519,12 +527,13 @@
                     Konsultasikan masalah kesehatan Anda atau keluarga langsung dengan tim kami untuk mendapatkan informasi mengenai produk AFC yang sesuai.
                 </p>
 
-                <button
-                    onclick="kirimWA('Konsultasi via Halaman Testimoni')"
-                    class="inline-block bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base"
+                <a
+                    href="chat.html"
+                    class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base"
                 >
-                    💬 Konsultasi Gratis via WhatsApp
-                </button>
+                    <span>🤖</span>
+                    <span>Hubungi Kami / Konsultasi</span>
+                </a>
 
             </div>
 
@@ -659,12 +668,13 @@
                     Konsultasikan kebutuhan Anda kepada tim kami untuk mendapatkan informasi mengenai produk AFC yang sesuai.
                 </p>
 
-                <button
-                    onclick="kirimWA('Konsultasi dari Halaman Testimoni')"
-                    class="inline-block bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:-translate-y-1 text-base md:text-lg"
+                <a
+                    href="chat.html"
+                    class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:-translate-y-1 text-base md:text-lg"
                 >
-                    💬 Konsultasi Gratis via WhatsApp
-                </button>
+                    <span>🤖</span>
+                    <span>Hubungi Kami / Konsultasi</span>
+                </a>
 
             </div>
 
@@ -699,15 +709,16 @@
                     </p>
 
                     <p class="text-lg font-extrabold text-yellow-400 tracking-wider mb-3">
-                        0851-8772-1970
+                        0878-2841-2340
                     </p>
 
-                    <button
-                        onclick="kirimWA('Tanya Seputar Produk / Bisnis')"
+                    <a 
+                        href="https://wa.me/6287828412340?text=Halo,%20saya%20ingin%20konsultasi%20mengenai%20produk%20atau%20bisnis%20AFC." 
+                        target="_blank"
                         class="inline-block bg-green-600 hover:bg-green-500 text-white font-semibold py-2 px-5 rounded-full text-xs transition shadow"
                     >
                         Chat WhatsApp Sekarang
-                    </button>
+                    </a>
 
                 </div>
 
@@ -765,7 +776,7 @@
         <footer class="bg-white border-t border-slate-100 py-8 text-center text-slate-500 text-sm">
 
             <p>
-                &copy; 2026 AFC Selling Candle. All rights reserved.
+                &copy; 2026 AFC Bright Candle. All rights reserved.
             </p>
 
         </footer>
@@ -777,19 +788,15 @@
 
         <div class="fixed bottom-6 right-6 z-50">
 
-            <button
-                onclick="kirimWA('Konsultasi dari Halaman Testimoni')"
+            <a
+                href="chat.html"
                 class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
-                aria-label="Chat WhatsApp"
+                aria-label="Hubungi JEMY"
             >
 
-                <img
-                    src="wa-icon.png"
-                    alt="WhatsApp"
-                    class="w-10 h-10 object-contain"
-                >
+                <span class="text-3xl leading-none">🤖</span>
 
-            </button>
+            </a>
 
         </div>
 
@@ -1071,58 +1078,6 @@
 
                 iconClose.classList.toggle('hidden');
                 tutupTutorial();
-
-            }
-
-
-            /* =========================================
-            5. WHATSAPP + GTM TRACKING (`track_whatsapp`)
-            ========================================== */
-
-            function kirimWA(namaProduk) {
-
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                    'event': 'track_whatsapp',
-                    'topik_wa': namaProduk
-                });
-
-                const params =
-                    new URLSearchParams(window.location.search);
-
-
-                const utmSource =
-                    params.get('utm_source') ||
-                    'Google Ads Testimoni';
-
-
-                const rawKeyword =
-                    params.get('keyword') ||
-                    params.get('utm_term') ||
-                    'Pencarian Testimoni';
-
-
-                const keyword =
-                    decodeURIComponent(rawKeyword)
-                        .replace(/\+/g, ' ');
-
-
-                const nomorWA =
-                    "6285187721970";
-
-
-                const pesan =
-                    `Halo, saya melihat halaman Testimoni & Video AFC. Saya tertarik dan ingin konsultasi mengenai ${namaProduk}. (Sumber: ${utmSource})`;
-
-
-                const finalUrl =
-                    `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
-
-
-                window.open(
-                    finalUrl,
-                    '_blank'
-                );
 
             }
 
