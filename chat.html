@@ -13,7 +13,7 @@
         .msg.user { background: #dcf8c6; align-self: flex-end; border-top-right-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased flex flex-col h-screen overflow-hidden">
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col h-[100dvh] overflow-hidden">
 
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QGKWNLG"
@@ -78,7 +78,7 @@
     <main class="flex-1 flex justify-center items-center bg-[#e5ddd5] overflow-hidden">
         <div class="chat-container w-full max-w-lg bg-white flex flex-col h-full sm:h-[88vh] sm:rounded-2xl sm:shadow-2xl overflow-hidden">
             <!-- Header Kotak Chat -->
-            <div class="bg-[#075e54] text-white p-4 font-bold flex items-center justify-between shadow-md">
+            <div class="bg-[#075e54] text-white p-3.5 font-bold flex items-center justify-between shadow-md flex-shrink-0">
                 <span>JEMY - Konsultan Virtual AFC</span>
                 <span class="text-xs bg-emerald-600 px-2.5 py-1 rounded-full font-normal">● Online</span>
             </div>
@@ -89,10 +89,10 @@
             </div>
 
             <!-- Indikator Loading -->
-            <div class="loading text-xs text-slate-500 bg-[#e5ddd5] px-4 py-1 italic" id="loadingIndicator" style="display: none;">JEMY sedang mengetik...</div>
+            <div class="loading text-xs text-slate-500 bg-[#e5ddd5] px-4 py-1 italic flex-shrink-0" id="loadingIndicator" style="display: none;">JEMY sedang mengetik...</div>
 
-            <!-- Area Input Pengguna -->
-            <div class="input-area flex items-center p-3 bg-[#f0f0f0] border-t border-slate-200">
+            <!-- Area Input Pengguna (Diberikan padding bawah tambahan agar tidak tertutup navbar HP) -->
+            <div class="input-area flex items-center p-3 pb-8 sm:pb-3 bg-[#f0f0f0] border-t border-slate-200 flex-shrink-0">
                 <input type="text" id="userInput" placeholder="Ketik pesan atau command (contoh: \menu, \0, 1)..." onkeypress="handleKeyPress(event)" class="flex-1 px-4 py-3 bg-white border border-slate-300 rounded-full outline-none focus:border-teal-600 text-sm">
                 <button onclick="sendMessage()" class="bg-[#075e54] hover:bg-[#054c43] text-white px-5 py-3 ml-2 rounded-full font-bold text-sm transition shadow">Kirim</button>
             </div>
