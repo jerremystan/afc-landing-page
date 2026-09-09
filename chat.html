@@ -7,7 +7,27 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .chat-box { background-color: #e5ddd5; }
+        /* Pastikan body dan html full tinggi tanpa scroll luar */
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; 
+        }
+        
+        .flex-col { display: flex; flex-direction: column; }
+        .overflow-hidden { overflow: hidden; }
+        
+        /* Styling Jendela Chat agar bisa scroll sendiri */
+        .chat-box { 
+            background-color: #e5ddd5; 
+            flex: 1; 
+            overflow-y: auto; 
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
         .msg { max-width: 80%; padding: 12px 16px; border-radius: 12px; font-size: 14px; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
         .msg.bot { background: #fff; align-self: flex-start; border-top-left-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
         .msg.user { background: #dcf8c6; align-self: flex-end; border-top-right-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
@@ -45,8 +65,8 @@
                 </button>
             </div>
 
-            <!-- Dropdown Menu Mobile -->
-            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-64 bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 transition-all duration-300 z-50 origin-top-right">
+            <!-- Dropdown Menu Mobile (Ditambahkan max-h dan overflow agar aman saat landscape) -->
+            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-64 max-h-[75vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 transition-all duration-300 z-50 origin-top-right">
                 <div class="flex flex-col space-y-2">
                     <a href="index.html" onclick="toggleMobileMenu()" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
                         🏠 Beranda
@@ -75,11 +95,12 @@
     </header>
 
     <!-- AREA CHAT UTAMA -->
-    <main class="flex-1 flex justify-center items-center bg-[#e5ddd5] overflow-hidden">
+    <main class="flex-1 flex justify-center items-center bg-[#e5ddd5] overflow-hidden p-0 sm:p-4" style="height: calc(100dvh - 65px);">
         <div class="chat-container w-full max-w-lg bg-white flex flex-col h-full sm:h-[88vh] sm:rounded-2xl sm:shadow-2xl overflow-hidden">
-            <!-- Header Kotak Chat -->
-            <div class="bg-[#075e54] text-white p-3.5 font-bold flex items-center justify-between shadow-md flex-shrink-0">
-                <span>JEMY - Konsultan Virtual AFC</span>
+            
+            <!-- Header Kotak Chat (Dijamin tidak akan terpotong lagi) -->
+            <div class="bg-[#075e54] text-white p-3 font-bold flex items-center justify-between shadow-md flex-shrink-0">
+                <span class="text-sm">🤖 JEMY - Konsultan Virtual AFC</span>
                 <span class="text-xs bg-emerald-600 px-2.5 py-1 rounded-full font-normal">● Online</span>
             </div>
 
@@ -91,7 +112,7 @@
             <!-- Indikator Loading -->
             <div class="loading text-xs text-slate-500 bg-[#e5ddd5] px-4 py-1 italic flex-shrink-0" id="loadingIndicator" style="display: none;">JEMY sedang mengetik...</div>
 
-            <!-- Area Input Pengguna (Diberikan padding bawah tambahan agar tidak tertutup navbar HP) -->
+            <!-- Area Input Pengguna -->
             <div class="input-area flex items-center p-3 pb-8 sm:pb-3 bg-[#f0f0f0] border-t border-slate-200 flex-shrink-0">
                 <input type="text" id="userInput" placeholder="Ketik pesan atau command (contoh: \menu, \0, 1)..." onkeypress="handleKeyPress(event)" class="flex-1 px-4 py-3 bg-white border border-slate-300 rounded-full outline-none focus:border-teal-600 text-sm">
                 <button onclick="sendMessage()" class="bg-[#075e54] hover:bg-[#054c43] text-white px-5 py-3 ml-2 rounded-full font-bold text-sm transition shadow">Kirim</button>
@@ -114,7 +135,7 @@
         window.addEventListener('click', function(e) {
             const menu = document.getElementById('mobile-menu');
             const menuBtn = document.getElementById('menu-btn');
-            if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+            if (menu && menuBtn && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
                 menu.classList.add('hidden');
                 document.getElementById('icon-open').classList.remove('hidden');
                 document.getElementById('icon-close').classList.add('hidden');
@@ -236,7 +257,7 @@ Silakan gunakan command berikut untuk bernavigasi:
 
             } catch (error) {
                 loading.style.display = "none";
-                appendMessage("bot", "Maaf, koneksi ke server sedang terganggu. Silakan ketik *\\0* atau *\\menu* untuk kembali ke Menu Utama.");
+                appendMessage("bot", "Maaf, koneksi ke server sedang terganggu. Silakan ketik *\\0* atau *\\menu* untuk kembali ke Menu Utama.\nHubungi admin jika masalah berlanjut.\nhttps://wa.me/6287828412340");
             }
         }
 

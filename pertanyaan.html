@@ -87,7 +87,7 @@
             </div>
 
             <!-- DROPDOWN MENU MOBILE -->
-            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-slate-100 p-3 transition-all duration-300 z-50 origin-top-right">
+            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-64 max-h-[75vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 transition-all duration-300 z-50 origin-top-right">
                 <div class="flex flex-col space-y-2">
                     <a href="index.html" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm">
                         🏠 Beranda
@@ -368,6 +368,20 @@
                 });
             });
         }
+
+        window.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('menu-btn');
+            
+            // Pastikan elemennya ada di halaman tersebut sebelum dicek
+            if (menu && menuBtn && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                menu.classList.add('hidden');
+                const iconOpen = document.getElementById('icon-open');
+                const iconClose = document.getElementById('icon-close');
+                if (iconOpen) iconOpen.classList.remove('hidden');
+                if (iconClose) iconClose.classList.add('hidden');
+            }
+        }); 
     </script>
 </body>
 </html>
