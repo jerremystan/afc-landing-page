@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flappy Suba - AFC Game</title>
+    <style>
+        * { box-sizing: border-box; user-select: none; -webkit-user-select: none; touch-action: none; }
+        body {
+            margin: 0; padding: 0;
+            background: #0f172a; color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 100vh; overflow: hidden;
+        }
+        #game-wrapper {
+            width: 100%; max-width: 360px;
+            background: #1e293b; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            border: 2px solid #fbbf24;
+            overflow: hidden; display: flex; flex-direction: column;
+            position: relative;
+        }
+        
+        /* Tombol Back ke Index */
+        .btn-back {
+            position: absolute; top: 12px; left: 15px;
+            background: rgba(15, 23, 42, 0.8); color: #fbbf24;
+            border: 1px solid #fbbf24; padding: 5px 12px;
+            font-size: 12px; font-weight: bold; border-radius: 6px;
+            text-decoration: none; z-index: 35;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+            transition: transform 0.1s;
+        }
+        .btn-back:active { transform: scale(0.95); }
+
+        .header {
+            display: flex; justify-content: flex-end; gap: 20px;
+            padding: 12px 20px; background: #0f172a;
+            font-size: 16px; font-weight: bold; border-bottom: 2px solid #fbbf24;
+            z-index: 25;
+        }
+        .text-gold { color: #fbbf24; text-shadow: 1px 1px 2px #000; }
+        
+        #game-area {
+            position: relative; width: 100%; height: 480px;
+            background: linear-gradient(to bottom, #0f172a, #1e293b);
+            overflow: hidden; cursor: pointer;
+        }
+
+        /* Background Bintang Bergeser */
+        .star {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: moveStar linear infinite;
+        }
+        @keyframes moveStar {
+            from { transform: translateX(360px); }
+            to { transform: translateX(-10px); }
+        }
+        
+        /* Karakter SOP */
+        #bird {
+            position: absolute; left: 50px;
+            width: 54px; height: 46px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8, #0f172a);
+            border: 2px solid #fbbf24; color: #fbbf24;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 12px; border-radius: 10px;
+            box-shadow: 0 0 15px rgba(251, 191, 36, 0.7), inset 0 0 8px rgba(56, 189, 248, 0.6);
+            z-index: 10; transition: transform 0.08s;
+            letter-spacing: 1px;
+        }
+        .crown {
+            font-size: 10px;
+            margin-bottom: -2px;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.8));
+        }
+
+        /* Efek Pasir Peri Lebih Rame & Dinamis */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 25;
+            animation: particleAnim 0.5s cubic-bezier(0, 0.1, 0.3, 1) forwards;
+        }
+        @keyframes particleAnim {
+            0% { transform: translate(0, 0) scale(1.5); opacity: 1; filter: brightness(1.8); }
+            70% { opacity: 0.9; }
+            100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
+        }
+
+        /* Rintangan Tiang Penyakit */
+        .pipe {
+            position: absolute; width: 60px;
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255, 255, 255, 0.98); font-size: 10px; font-weight: bold;
+            writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.5px;
+            white-space: nowrap; overflow: hidden;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.4);
+        }
+        
+        /* Tanah Bergeser */
+        .ground-container {
+            position: absolute; bottom: 0; width: 100%; height: 15px;
+            overflow: hidden; z-index: 15; background: #b45309;
+        }
+        .ground-stripes {
+            position: absolute; width: 200%; height: 100%;
+            background: repeating-linear-gradient(45deg, #fbbf24, #fbbf24 12px, #d97706 12px, #d97706 24px);
+            animation: scrollGround 0.8s linear infinite;
+        }
+        @keyframes scrollGround {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        #ui-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.9); z-index: 30;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 20px;
+        }
+        h1 { color: #fbbf24; margin-bottom: 5px; font-size: 34px; text-shadow: 2px 2px 4px #000; }
+        p { color: #e2e8f0; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
+        .btn-start {
+            background: linear-gradient(to bottom, #f59e0b, #d97706);
+            color: white; border: 2px solid #fbbf24;
+            padding: 14px 40px; font-size: 18px; font-weight: bold;
+            border-radius: 12px; cursor: pointer; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.5);
+        }
+        .btn-start:active { transform: scale(0.95); }
+    </style>
+</head>
+<body>
+
+    <div id="game-wrapper">
+        <a href="index.html#flappysuba" class="btn-back">⬅ Kembali</a>
+
+        <div class="header">
+            <div>Skor: <span id="score" class="text-gold">0</span></div>
+            <div>🏆 High: <span id="highScore" class="text-gold">0</span></div>
+        </div>
+
+        <div id="game-area">
+            <div id="bird">
+                <div class="crown">👑</div>
+                SOP
+            </div>
+
+            <div class="ground-container">
+                <div class="ground-stripes"></div>
+            </div>
+            
+            <div id="ui-overlay">
+                <h1>FLAPPY SUBA</h1>
+                <p>Tap layar untuk terbang!<br>Hancurkan rintangan penyakit dengan warna berbeda.</p>
+                <button class="btn-start" id="startBtn">Mulai Terbang 🚀</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const gameArea = document.getElementById('game-area');
+        const bird = document.getElementById('bird');
+        const scoreDisplay = document.getElementById('score');
+        const highScoreDisplay = document.getElementById('highScore');
+        const overlay = document.getElementById('ui-overlay');
+        const startBtn = document.getElementById('startBtn');
+
+        let birdY = 200;
+        let velocity = 0;
+        let gravity = 0.45;
+        let jumpStrength = -7;
+        let score = 0;
+        let pipes = [];
+        let stars = [];
+        let isPlaying = false;
+        let gameLoop;
+        let frameCount = 0;
+
+        const obstaclesData = [
+            { label: "KOLESTEROL", bg: "linear-gradient(to right, #f97316, #c2410c)", border: "2px solid #fdba74" },
+            { label: "ASAM URAT", bg: "linear-gradient(to right, #a855f7, #7e22ce)", border: "2px solid #d8b4fe" },
+            { label: "GULA DARAH", bg: "linear-gradient(to right, #ef4444, #991b1b)", border: "2px solid #fca5a5" },
+            { label: "HIPERTENSI", bg: "linear-gradient(to right, #06b6d4, #0e7490)", border: "2px solid #67e8f9" }
+        ];
+
+        let highScore = localStorage.getItem('flappySubaHighScore') || 0;
+        highScoreDisplay.innerText = highScore;
+
+        function initStars() {
+            for (let i = 0; i < 15; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                let size = Math.random() * 3 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.top = Math.random() * 450 + 'px';
+                star.style.left = Math.random() * 360 + 'px';
+                let duration = Math.random() * 3 + 2;
+                star.style.animationDuration = duration + 's';
+                star.style.animationDelay = (Math.random() * 3) + 's';
+                gameArea.appendChild(star);
+                stars.push(star);
+            }
+        }
+        initStars();
+
+        // Fungsi Pasir Peri yang Jauh Lebih Rame & Spektakuler
+        function createFairyDust(x, y) {
+            for (let i = 0; i < 30; i++) { // Jumlah partikel ditingkatkan jadi 30 biar rame!
+                let p = document.createElement('div');
+                p.className = 'particle';
+                p.style.left = x + 'px';
+                p.style.top = y + 'px';
+                
+                // Variasi ukuran partikel (ada yang kecil, ada yang sedang)
+                let size = Math.random() * 6 + 3; // 3px s/d 9px
+                p.style.width = size + 'px';
+                p.style.height = size + 'px';
+
+                // Sebaran arah dan kecepatan acak yang lebih luas
+                let angle = Math.random() * Math.PI * 2;
+                let speed = Math.random() * 85 + 20; 
+                let dx = Math.cos(angle) * speed;
+                let dy = Math.sin(angle) * speed;
+                
+                p.style.setProperty('--dx', dx + 'px');
+                p.style.setProperty('--dy', dy + 'px');
+                
+                // Kombinasi warna-warni sihir yang semarak
+                if (i % 4 === 0) {
+                    p.style.background = '#38bdf8'; // Cyan terang
+                    p.style.boxShadow = '0 0 10px #38bdf8';
+                } else if (i % 4 === 1) {
+                    p.style.background = '#ffffff'; // Putih menyala
+                    p.style.boxShadow = '0 0 10px #ffffff';
+                } else if (i % 4 === 2) {
+                    p.style.background = '#fef08a'; // Kuning muda
+                    p.style.boxShadow = '0 0 10px #fef08a';
+                } else {
+                    p.style.background = '#fbbf24'; // Emas AFC
+                    p.style.boxShadow = '0 0 10px #fbbf24';
+                }
+
+                gameArea.appendChild(p);
+                setTimeout(() => p.remove(), 500);
+            }
+        }
+
+        const jump = (e) => {
+            if (e) e.preventDefault();
+            if (isPlaying) {
+                velocity = jumpStrength;
+                createFairyDust(75, birdY + 23); // Panggil ledakan pasir peri di posisi SOP
+            }
+        };
+
+        gameArea.addEventListener('touchstart', jump);
+        gameArea.addEventListener('mousedown', jump);
+        startBtn.addEventListener('click', startGame);
+        startBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startGame(); });
+
+        function startGame() {
+            document.querySelectorAll('.pipe').forEach(p => p.remove());
+            pipes = [];
+            birdY = 200;
+            velocity = 0;
+            score = 0;
+            frameCount = 0;
+            scoreDisplay.innerText = score;
+            bird.style.top = birdY + 'px';
+            bird.style.transform = 'rotate(0deg)';
+            
+            overlay.style.display = 'none';
+            isPlaying = true;
+            
+            if (gameLoop) cancelAnimationFrame(gameLoop);
+            gameLoop = requestAnimationFrame(update);
+        }
+
+        function createPipe() {
+            const gap = 150;
+            const minHeight = 65;
+            const maxHeight = 480 - gap - minHeight - 15;
+            const topHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
+            const bottomHeight = 480 - 15 - topHeight - gap;
+            
+            const obstacle = obstaclesData[Math.floor(Math.random() * obstaclesData.length)];
+
+            const pipeTop = document.createElement('div');
+            pipeTop.className = 'pipe';
+            pipeTop.style.top = '0';
+            pipeTop.style.height = topHeight + 'px';
+            pipeTop.style.left = '360px';
+            pipeTop.style.background = obstacle.bg;
+            pipeTop.style.border = obstacle.border;
+            
+            const pipeBottom = document.createElement('div');
+            pipeBottom.className = 'pipe';
+            pipeBottom.style.bottom = '15px';
+            pipeBottom.style.height = bottomHeight + 'px';
+            pipeBottom.style.left = '360px';
+            pipeBottom.style.background = obstacle.bg;
+            pipeBottom.style.border = obstacle.border;
+            pipeBottom.innerText = obstacle.label;
+
+            gameArea.appendChild(pipeTop);
+            gameArea.appendChild(pipeBottom);
+
+            pipes.push({
+                x: 360,
+                topEl: pipeTop,
+                bottomEl: pipeBottom,
+                width: 60,
+                topHeight: topHeight,
+                bottomY: 480 - 15 - bottomHeight,
+                passed: false
+            });
+        }
+
+        function update() {
+            if (!isPlaying) return;
+
+            velocity += gravity;
+            birdY += velocity;
+            bird.style.top = birdY + 'px';
+            
+            let rotation = Math.min((velocity * 4), 90);
+            bird.style.transform = `rotate(${rotation}deg)`;
+
+            if (birdY >= 480 - 15 - 46 || birdY <= 0) {
+                return gameOver();
+            }
+
+            frameCount++;
+            if (frameCount % 90 === 0) {
+                createPipe();
+            }
+
+            for (let i = pipes.length - 1; i >= 0; i--) {
+                let p = pipes[i];
+                p.x -= 3;
+                p.topEl.style.left = p.x + 'px';
+                p.bottomEl.style.left = p.x + 'px';
+
+                let birdRect = { left: 50, right: 104, top: birdY, bottom: birdY + 46 };
+                let pipeRect = { left: p.x, right: p.x + p.width, topBottom: p.topHeight, bottomTop: p.bottomY };
+
+                if (birdRect.right > pipeRect.left && birdRect.left < pipeRect.right) {
+                    if (birdRect.top < pipeRect.topBottom || birdRect.bottom > pipeRect.bottomTop) {
+                        return gameOver();
+                    }
+                }
+
+                if (p.x + p.width < 50 && !p.passed) {
+                    score++;
+                    scoreDisplay.innerText = score;
+                    p.passed = true;
+                }
+
+                if (p.x + p.width < 0) {
+                    p.topEl.remove();
+                    p.bottomEl.remove();
+                    pipes.splice(i, 1);
+                }
+            }
+
+            gameLoop = requestAnimationFrame(update);
+        }
+
+        function gameOver() {
+            isPlaying = false;
+            cancelAnimationFrame(gameLoop);
+
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('flappySubaHighScore', highScore);
+                highScoreDisplay.innerText = highScore;
+            }
+
+            overlay.style.display = 'flex';
+            overlay.innerHTML = `
+                <h1 style="color: #ef4444; font-size: 32px;">GAME OVER</h1>
+                <p style="color: #fff;">SOP Menabrak Rintangan!<br><br>Skor Kamu: <b class="text-gold" style="font-size:20px;">${score}</b><br>Rekor Tertinggi: <b class="text-gold">${highScore}</b></p>
+                <button class="btn-start" id="restartBtn">Coba Lagi 🔄</button>
+            `;
+
+            const restartBtn = document.getElementById('restartBtn');
+            restartBtn.addEventListener('click', startGame);
+            restartBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startGame(); });
+        }
+    </script>
+</body>
+</html>
