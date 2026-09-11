@@ -153,7 +153,7 @@
         <div class="header">
             <div>Lv: <span id="weapon-status">1</span>/10</div>
             <div>Skor: <span id="score" class="text-gold">0</span></div>
-            <div>Umur: <span id="age-display" class="text-gold">25 <span style="font-size:10px;">jt thn caha</span></span></div>
+            <div>Umur: <span id="age-display" class="text-gold">25 <span style="font-size:10px;">jt thn chy</span></span></div>
         </div>
 
         <div id="game-area">
@@ -207,7 +207,7 @@
         const diffSettings = {
             easy:   { virusSpeedMul: 0.75, hpDiv: 60, spawnRateBase: 100, utsuInterval: 300 },
             normal: { virusSpeedMul: 0.95, hpDiv: 45, spawnRateBase: 85,  utsuInterval: 500 },
-            hard:   { virusSpeedMul: 1.25, hpDiv: 35, spawnRateBase: 70,  utsuInterval: 700 }
+            hard:   { virusSpeedMul: 1.00, hpDiv: 40, spawnRateBase: 80,  utsuInterval: 600 }
         };
 
         diffButtons.forEach(btn => {
@@ -293,7 +293,7 @@
 
         function updateAgeDisplay() {
             let currentAge = baseAge + Math.floor(frameCount / 60);
-            ageDisplay.innerHTML = `${currentAge} <span style="font-size:10px;">jt thn caha</span>`;
+            ageDisplay.innerHTML = `${currentAge} <span style="font-size:10px;">jt thn chy</span>`;
         }
 
         function shootLaser() {
@@ -534,7 +534,7 @@
             overlay.style.display = 'flex';
             overlay.innerHTML = `
                 <h1 style="color: #ef4444; font-size: 32px;">TERINFEKSI!</h1>
-                <p style="color: #fff;">Pesawat SOP bertahan hingga umur <b class="text-gold">${finalAge} jt thn caha</b>.<br><br>Mode: <b style="color:#38bdf8; text-transform: uppercase;">${currentDifficulty}</b><br>Level Tercapai: <b style="color:#c084fc;">${weaponLevel === 10 ? '10 (MAX)' : weaponLevel + '/10'}</b><br>Skor Basmi: <b class="text-gold" style="font-size:18px;">${score}</b></p>
+                <p style="color: #fff;">Pesawat SOP bertahan hingga umur <b class="text-gold">${finalAge} jt thn chy</b>.<br><br>Mode: <b style="color:#38bdf8; text-transform: uppercase;">${currentDifficulty}</b><br>Level Tercapai: <b style="color:#c084fc;">${weaponLevel === 10 ? '10 (MAX)' : weaponLevel + '/10'}</b><br>Skor Basmi: <b class="text-gold" style="font-size:18px;">${score}</b></p>
                 <button class="btn-start" id="restartBtn">Basmi Ulang 🔄</button>
             `;
 
