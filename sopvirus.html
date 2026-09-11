@@ -148,7 +148,7 @@
 <body>
 
     <div id="game-wrapper">
-        <a href="index.html#sopvirus" class="btn-back">⬅ Kembali</a>
+        <a href="#" onclick="if (document.referrer) { history.back(); } else { window.location.href = 'index.html'; } return false;" class="btn-back">⬅ Kembali</a>
 
         <div class="header">
             <div>Lv: <span id="weapon-status">1</span>/10</div>
