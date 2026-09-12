@@ -47,6 +47,18 @@
             text-align: center; padding: 15px 20px;
         }
         h1 { color: #38bdf8; margin-bottom: 2px; font-size: 26px; text-shadow: 0 0 10px rgba(56,189,248,0.5); }
+        
+        .welcome-rank {
+            color: #38bdf8; font-size: 12px; font-weight: bold; margin-bottom: 4px;
+            text-shadow: 0 0 8px rgba(56,189,248,0.3);
+        }
+
+        .high-score-box {
+            background: rgba(251, 191, 36, 0.15); border: 1px solid rgba(251, 191, 36, 0.4);
+            color: #fbbf24; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold;
+            margin-bottom: 12px;
+        }
+
         .tutorial-box {
             background: rgba(15, 23, 42, 0.8); border: 1px solid #475569; border-radius: 8px;
             padding: 10px; margin-bottom: 15px; width: 100%; text-align: left; font-size: 11px; line-height: 1.4; color: #cbd5e1;
@@ -84,6 +96,13 @@
             <div id="ui-overlay">
                 <h1>SOP SLASHER</h1>
                 
+                <!-- Sapaan Gelar Tertinggi di Menu Utama -->
+                <div class="welcome-rank" id="menu-welcome-rank">Welcome, Toreda!</div>
+                
+                <div class="high-score-box">
+                    🏆 High Score: <span id="menu-high-score">0</span>
+                </div>
+                
                 <div class="tutorial-box">
                     <div>⚔️ <b>CARA MAIN:</b> Swipe jari untuk menebas cepat!</div>
                     <div style="margin-top: 4px;">⚠️ <b>PERATURAN:</b></div>
@@ -106,6 +125,8 @@
         const overlay = document.getElementById('ui-overlay');
         const startBtn = document.getElementById('startBtn');
         const flash = document.getElementById('damage-flash');
+        const menuHighScoreDisplay = document.getElementById('menu-high-score');
+        const menuWelcomeRank = document.getElementById('menu-welcome-rank');
 
         let isPlaying = false;
         let gameLoop;
@@ -121,10 +142,12 @@
         let isSwiping = false;
         let swipePath = [];
         
-        // VARIABEL ANTI-EXPLOIT COMBO
         let comboCount = 0;
         let lastSlashTime = 0;
-        const COMBO_TIMEOUT = 400; // Jeda maksimal milidetik antar tebasan agar tetap dihitung 1 rangkaian combo
+        const COMBO_TIMEOUT = 400;
+
+        let savedHighScore = localStorage.getItem('sopSlasherHighScore') || 0;
+        menuHighScoreDisplay.innerText = savedHighScore;
 
         function getRank(s) {
             if (s >= 1200) return "Bushido";
@@ -133,6 +156,16 @@
             if (s >= 351)  return "Samurai";
             if (s >= 121)  return "Ronin";
             return "Toreda";
+        }
+
+        // Set sapaan awal berdasarkan High Score yang tersimpan
+        updateMenuWelcomeRank(savedHighScore);
+
+        function updateMenuWelcomeRank(s) {
+            let currentRank = getRank(s);
+            if (menuWelcomeRank) {
+                menuWelcomeRank.innerText = `Welcome, ${currentRank}!`;
+            }
         }
 
         const targetTypes = [
@@ -191,7 +224,6 @@
             let lastPos = swipePath[swipePath.length - 1];
             let moveDist = Math.hypot(pos.x - lastPos.x, pos.y - lastPos.y);
 
-            // Anti-cheat: Abaikan jika kursor diam/tidak digeser
             if (moveDist < 2) return;
 
             swipePath.push(pos);
@@ -202,8 +234,6 @@
         function endSwipe() {
             isSwiping = false;
             swipePath = [];
-            
-            // Evaluasi penutupan combo saat jari diangkat
             finalizeCombo();
         }
 
@@ -246,12 +276,10 @@
                         updateScoreAndRank();
                         createExplosion(t.x, t.y, t.c1);
                         
-                        // Cek apakah jeda dari tebasan terakhir masih dalam batas waktu combo
                         if (now - lastSlashTime < COMBO_TIMEOUT) {
                             comboCount++;
                         } else {
-                            // Jika jeda terlalu lama, hitung ulang combo dari 1
-                            finalizeCombo(); // Simpan combo sebelumnya jika ada
+                            finalizeCombo(); 
                             comboCount = 1;
                         }
                         lastSlashTime = now;
@@ -260,7 +288,7 @@
                         takeDamage();
                         createFloatText("JANGAN DITEBAS!", t.x, t.y, '#ef4444');
                         createExplosion(t.x, t.y, '#ef4444');
-                        comboCount = 0; // Reset combo kalau salah tebas kotak AFC
+                        comboCount = 0; 
                     }
                     targets.splice(i, 1);
                 }
@@ -335,7 +363,6 @@
             if (!isPlaying) return;
             frameCount++;
 
-            // Cek otomatis batasan waktu combo jika pemain diam tidak menebas apa-apa
             if (comboCount > 0 && Date.now() - lastSlashTime > COMBO_TIMEOUT) {
                 finalizeCombo();
             }
@@ -483,16 +510,47 @@
             cancelAnimationFrame(gameLoop);
 
             let finalRank = getRank(score);
+            let newHighScoreMsg = '';
+            
+            if (score > savedHighScore) {
+                savedHighScore = score;
+                localStorage.setItem('sopSlasherHighScore', savedHighScore);
+                menuHighScoreDisplay.innerText = savedHighScore;
+                updateMenuWelcomeRank(savedHighScore);
+                newHighScoreMsg = '<br><span style="color:#f59e0b; font-size:12px; display:inline-block; margin-top:4px; background:rgba(245,158,11,0.2); padding:2px 6px; border-radius:4px;">🎉 NEW HIGH SCORE! 🎉</span>';
+            }
 
             overlay.style.display = 'flex';
             overlay.innerHTML = `
-                <h1 style="color: #ef4444;">GAME OVER</h1>
-                <p style="color: #fff;">Pertahanan tubuhmu tembus.<br><br>Gelar Akhir: <b style="color:#38bdf8;">${finalRank}</b><br>Skor Tebasan: <b class="text-gold" style="font-size:24px;">${score}</b></p>
+                <h1 style="color: #ef4444; font-size: 24px;">GAME OVER</h1>
+                <p style="color: #fff; margin-bottom: 20px; line-height: 1.6;">
+                    Gelar Akhir: <b style="color:#38bdf8;">${finalRank}</b><br>
+                    Skor Tebasan: <b class="text-gold" style="font-size:20px;">${score}</b><br>
+                    🏆 High Score: <b style="color:#fbbf24;">${savedHighScore}</b>
+                    ${newHighScoreMsg}
+                </p>
                 <button class="btn-start" id="restartBtn">Tebas Lagi 🔄</button>
             `;
 
             const restartBtn = document.getElementById('restartBtn');
-            restartBtn.addEventListener('click', startGame);
+            restartBtn.addEventListener('click', () => {
+                let currentHighestRank = getRank(savedHighScore);
+                overlay.innerHTML = `
+                    <h1>SOP SLASHER</h1>
+                    <div class="welcome-rank" id="menu-welcome-rank">Welcome, ${currentHighestRank}!</div>
+                    <div class="high-score-box">🏆 High Score: <span id="menu-high-score">${savedHighScore}</span></div>
+                    <div class="tutorial-box">
+                        <div>⚔️ <b>CARA MAIN:</b> Swipe jari untuk menebas cepat!</div>
+                        <div style="margin-top: 4px;">⚠️ <b>PERATURAN:</b></div>
+                        <div style="margin-left: 10px; color: #60a5fa;">• Jangan tebas Sachet SOP (Biru Tua)</div>
+                        <div style="margin-left: 10px; color: #c084fc;">• Jangan tebas Sachet Utsu (Ungu Tua)</div>
+                        <div style="margin-top: 4px; color: #ef4444;"> Nahan kursor / diam menunggu musuh tidak akan menghitung combo!</div>
+                    </div>
+                    <button class="btn-start" id="startBtn">Mulai Tebas ⚔️</button>
+                `;
+                document.getElementById('startBtn').addEventListener('click', startGame);
+                startGame();
+            });
         }
     </script>
 </body>
