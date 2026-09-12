@@ -51,24 +51,35 @@
             position: relative;
         }
         
-        /* Tombol Back ke Index */
-        .btn-back {
-            position: absolute; top: 12px; left: 15px;
-            background: rgba(15, 23, 42, 0.8); color: #fbbf24;
-            border: 1px solid #fbbf24; padding: 5px 12px;
-            font-size: 12px; font-weight: bold; border-radius: 6px;
-            text-decoration: none; z-index: 35;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-            transition: transform 0.1s;
-        }
-        .btn-back:active { transform: scale(0.95); }
-
+        /* Tombol Back ke Index yang Sudah Dirapikan */
         .header {
-            display: flex; justify-content: flex-end; gap: 20px;
-            padding: 12px 20px; background: #0f172a;
-            font-size: 16px; font-weight: bold; border-bottom: 2px solid #fbbf24;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; /* Kunci utama agar tombol dan skor sejajar pas di tengah secara vertikal */
+            padding: 10px 15px; 
+            background: #0f172a;
+            font-size: 12px; 
+            font-weight: bold; 
+            border-bottom: 2px solid #fbbf24; 
             z-index: 25;
         }
+
+        .btn-back-in {
+            background: rgba(56, 189, 248, 0.15); 
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.4); 
+            padding: 5px 10px;
+            font-size: 11px; 
+            font-weight: bold; 
+            border-radius: 6px;
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; /* Biar ikon panah dan teks 'Kembali' rata tengah */
+            transition: transform 0.1s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+        .btn-back-in:active { transform: scale(0.95); }
+
         .text-gold { color: #fbbf24; text-shadow: 1px 1px 2px #000; }
         
         #game-area {
@@ -175,11 +186,13 @@
     </div>
 
     <div id="game-wrapper">
-        <a href="#" onclick="if (document.referrer) { history.back(); } else { window.location.href = 'index.html'; } return false;" class="btn-back">⬅ Kembali</a>
-
+        
         <div class="header">
-            <div>Skor: <span id="score" class="text-gold">0</span></div>
-            <div>🏆 High: <span id="highScore" class="text-gold">0</span></div>
+            <a href="#" onclick="if (document.referrer) { history.back(); } else { window.location.href = 'index.html'; } return false;" class="btn-back-in">⬅ Kembali</a>
+            <div style="display: flex; gap: 15px; align-items: center; font-size: 14px;">
+                <div>Skor: <span id="score" class="text-gold">0</span></div>
+                <div>🏆 High: <span id="highScore" class="text-gold">0</span></div>
+            </div>
         </div>
 
         <div id="game-area">
@@ -435,11 +448,9 @@
         // Fungsi Cek Orientasi Layar
         function checkOrientation() {
             const warning = document.getElementById('landscape-warning');
-            // Jika lebar layar lebih besar dari tinggi (artinya posisi landscape/mendatar) dan lebar layar kecil (kategori mobile/HP)
             if (window.innerWidth > window.innerHeight && window.innerWidth <= 900) {
                 warning.style.display = 'flex';
                 if (typeof isPlaying !== 'undefined' && isPlaying) {
-                    // Jeda game jika sedang berjalan
                     isPlaying = false;
                 }
             } else {
@@ -447,7 +458,6 @@
             }
         }
 
-        // Jalankan saat load dan saat layar diputar (resize/orientationchange)
         window.addEventListener('load', checkOrientation);
         window.addEventListener('resize', checkOrientation);
         window.addEventListener('orientationchange', checkOrientation);
