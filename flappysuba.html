@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Flappy Suba - AFC Game</title>
     <style>
+        /* Overlay Peringatan Rotasi Layar */
+        #landscape-warning {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #0f172a;
+            z-index: 9999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        .rotate-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            animation: rotatePhone 1.5s infinite ease-in-out;
+        }
+
+        @keyframes rotatePhone {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(90deg); }
+        }
         * { box-sizing: border-box; user-select: none; -webkit-user-select: none; touch-action: none; }
         body {
             margin: 0; padding: 0;
@@ -137,6 +165,14 @@
     </style>
 </head>
 <body>
+    <!-- Peringatan Putar Layar -->
+    <div id="landscape-warning">
+        <div class="rotate-icon">📱</div>
+        <h2 style="color: #fbbf24; margin-bottom: 10px; font-size: 20px;">Harap Tegakkan Layar HP Anda!</h2>
+        <p style="color: #cbd5e1; font-size: 12px; max-width: 280px; line-height: 1.4;">
+            Game ini dirancang khusus untuk mode vertikal (portrait). Silakan putar perangkat Anda ke posisi tegak untuk melanjutkan bermain.
+        </p>
+    </div>
 
     <div id="game-wrapper">
         <a href="#" onclick="if (document.referrer) { history.back(); } else { window.location.href = 'index.html'; } return false;" class="btn-back">⬅ Kembali</a>
@@ -395,6 +431,26 @@
             restartBtn.addEventListener('click', startGame);
             restartBtn.addEventListener('touchstart', (e) => { e.preventDefault(); startGame(); });
         }
+
+        // Fungsi Cek Orientasi Layar
+        function checkOrientation() {
+            const warning = document.getElementById('landscape-warning');
+            // Jika lebar layar lebih besar dari tinggi (artinya posisi landscape/mendatar) dan lebar layar kecil (kategori mobile/HP)
+            if (window.innerWidth > window.innerHeight && window.innerWidth <= 900) {
+                warning.style.display = 'flex';
+                if (typeof isPlaying !== 'undefined' && isPlaying) {
+                    // Jeda game jika sedang berjalan
+                    isPlaying = false;
+                }
+            } else {
+                warning.style.display = 'none';
+            }
+        }
+
+        // Jalankan saat load dan saat layar diputar (resize/orientationchange)
+        window.addEventListener('load', checkOrientation);
+        window.addEventListener('resize', checkOrientation);
+        window.addEventListener('orientationchange', checkOrientation);
     </script>
 </body>
 </html>
