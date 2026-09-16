@@ -139,14 +139,26 @@
             const nameInput = document.getElementById('userNameInput').value.trim();
             const phoneInput = document.getElementById('userPhoneInput').value.trim();
             
-            if (!nameInput || !phoneInput || phoneInput.length < 9) {
-                alert("Mohon isi Nama panggilan dan Nomor WhatsApp aktif ya Kak.");
+            // 1. Cek apakah kolom kosong
+            if (!nameInput) {
+                alert("Mohon isi Nama panggilan Kakak ya.");
+                return;
+            }
+            if (!phoneInput) {
+                alert("Mohon isi Nomor WhatsApp aktif Kakak.");
                 return;
             }
 
-            // Bersihkan format nomor untuk dijadikan ID
+            // 2. Bersihkan format nomor untuk dicek (otomatis ubah ke 62...)
             const cleanedPhone = formatNomorHP(phoneInput);
             
+            // 3. Validasi ketat nomor HP Indonesia (Harus awalan 628 dan panjang 10-15 digit)
+            if (!cleanedPhone.startsWith('628') || cleanedPhone.length < 10 || cleanedPhone.length > 15) {
+                alert("⚠️ Format nomor WhatsApp tidak valid. Pastikan nomor benar dan berawalan 08... (Contoh: 08123456789).");
+                return;
+            }
+
+            // Jika lolos validasi, simpan data dan mulai chat
             localStorage.setItem("jemy_phone", cleanedPhone);
             localStorage.setItem("jemy_name", nameInput);
             
