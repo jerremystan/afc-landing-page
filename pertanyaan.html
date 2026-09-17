@@ -160,13 +160,26 @@
                 <p class="text-slate-600 text-sm md:text-base mb-8 max-w-lg mx-auto">
                     Jangan ragu. Konsultasikan langsung kondisi Anda atau pertimbangkan strategi bisnis yang tepat bersama tim ahli kami via WhatsApp.
                 </p>
-                <a 
-                    href="chat.html"
-                    class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base"
-                >
-                    <span>🤖</span>
-                    <span>Hubungi Kami / Konsultasi</span>
-                </a>
+                
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <!-- Tombol Bot (Warna Teal) -->
+                    <a 
+                        href="chat.html"
+                        class="inline-flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-500 text-white font-bold py-3.5 px-6 sm:px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base w-full sm:w-auto"
+                    >
+                        <span>🤖</span>
+                        <span>Hubungi / Konsultasi (JEMY VA)</span>
+                    </a>
+
+                    <!-- Tombol WhatsApp Langsung (Warna Green & wa-icon.png) -->
+                    <button 
+                        onclick="kirimWA('Konsultasi Pertanyaan Lainnya')"
+                        class="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-6 sm:px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base w-full sm:w-auto cursor-pointer"
+                    >
+                        <img src="wa-icon.png" alt="WhatsApp Icon" class="w-5 h-5 object-contain">
+                        <span>Chat WhatsApp Langsung</span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -223,7 +236,7 @@
     <div class="fixed bottom-6 right-6 z-50">
         <a 
             href="chat.html"
-            class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
+            class="bg-teal-500 hover:bg-teal-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
         >
             <span class="text-3xl leading-none">🤖</span>
         </a>

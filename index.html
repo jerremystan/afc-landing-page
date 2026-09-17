@@ -126,20 +126,31 @@
         </p>
 
         <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10">
+            <!-- 1. Tombol Lihat Pilihan Produk -->
             <a 
                 href="#produk-satuan-section"
-                class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-blue-900 font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:scale-105"
+                class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-400 text-blue-900 font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:scale-105 text-center"
             >
                 Lihat Pilihan Produk
             </a>
 
+            <!-- 2. Tombol JEMY VA (Tetap Ada) -->
             <a 
                 href="chat.html"
-                class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2"
+                class="w-full sm:w-auto bg-teal-600 hover:bg-teal-500 text-white font-bold py-3.5 px-6 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2"
             >
                 <span class="text-xl leading-none">🤖</span>
                 <span>Konsultasi Gratis (JEMY VA)</span>
             </a>
+
+            <!-- 3. Tombol WhatsApp Langsung (Berjajar pakai wa-icon.png) -->
+            <button 
+                onclick="kirimWA('Konsultasi Umum Website')"
+                class="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-6 rounded-full shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2 cursor-pointer"
+            >
+                <img src="wa-icon.png" alt="WhatsApp Icon" class="w-6 h-6 object-contain">
+                <span>Chat WhatsApp Langsung</span>
+            </button>
         </div>
 
         <div class="max-w-4xl mx-auto bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
@@ -661,14 +672,24 @@
                 </div>
             </div>
 
-            <div class="text-center">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <!-- Tombol JEMY (VA) -->
                 <a 
                     href="chat.html"
-                    class="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transition transform hover:-translate-y-1 text-base md:text-lg"
+                    class="inline-flex items-center justify-center gap-2 bg-teal-600 hover:bg-teal-500 text-white font-bold py-4 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-base md:text-lg w-full sm:w-auto"
                 >
                     <span class="text-xl leading-none">🤖</span>
                     <span>Hubungi JEMY (VA)</span>
                 </a>
+
+                <!-- Tombol WhatsApp Langsung (Menggunakan wa-icon.png & kirimWA) -->
+                <button 
+                    onclick="kirimWA('Konsultasi Umum Website')"
+                    class="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-4 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-base md:text-lg w-full sm:w-auto cursor-pointer"
+                >
+                    <img src="wa-icon.png" alt="WhatsApp Icon" class="w-6 h-6 object-contain">
+                    <span>Hubungi Kami</span>
+                </button>
             </div>
         </div>
     </section>
@@ -973,7 +994,7 @@
     <div class="fixed bottom-6 right-6 z-50">
         <a 
             href="chat.html"
-            class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
+            class="bg-teal-500 hover:bg-teal-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
         >
         <span class="text-3xl leading-none">🤖</span>
         </a>

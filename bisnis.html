@@ -129,13 +129,23 @@
             Peluang Bisnis Menarik! 🚀 Cukup dengan pembelian 1, 3, atau 6 paket dengan harga resmi, kamu nggak cuma dapat produknya, lho! Kamu akan LANGSUNG terdaftar sebagai Member dan otomatis mendapatkan Hak Usaha. Yuk, mulai bisnismu sekarang! 💼✨
         </p>
 
-        <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto">
+            <!-- Tombol Bot (Warna Teal) -->
             <a
                 href="chat.html"
-                class="bg-green-500 hover:bg-green-400 text-white font-bold py-3.5 px-8 rounded-full shadow-xl transition transform hover:-translate-y-1 text-sm md:text-base flex items-center justify-center gap-2"
+                class="bg-teal-600 hover:bg-teal-500 text-white font-bold py-3.5 px-6 rounded-full shadow-xl transition transform hover:-translate-y-1 text-sm md:text-base flex items-center justify-center gap-2 w-full sm:w-auto"
             >
                 <span>🤖 Konsultasi Cara Memulai</span>
             </a>
+
+            <!-- Tombol WhatsApp Langsung (Warna Green & wa-icon.png) -->
+            <button 
+                onclick="kirimWA('Konsultasi Cara Memulai')"
+                class="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-6 rounded-full shadow-xl transition transform hover:-translate-y-1 text-sm md:text-base w-full sm:w-auto cursor-pointer"
+            >
+                <img src="wa-icon.png" alt="WhatsApp Icon" class="w-5 h-5 object-contain">
+                <span>Chat WhatsApp Langsung</span>
+            </button>
         </div>
     </section>
 
@@ -263,12 +273,25 @@
             <p class="text-slate-300 text-sm md:text-base mb-8 max-w-xl mx-auto">
                 Konsultasikan level awal, cara pemasaran, sistem dua jalur, dan langkah yang bisa Anda mulai bersama mentor.
             </p>
-            <a
-                href="chat.html"
-                class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base inline-flex items-center gap-2"
-            >
-                <span>🤖 Konsultasi Bisnis Sekarang</span>
-            </a>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <!-- Tombol Konsultasi Bisnis (Bot) -->
+                <a
+                    href="chat.html"
+                    class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-6 sm:px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base inline-flex items-center justify-center gap-2 w-full sm:w-auto"
+                >
+                    <span>🤖 Konsultasi Bisnis Sekarang</span>
+                </a>
+
+                <!-- Tombol WhatsApp Langsung -->
+                <button 
+                    onclick="kirimWA('Konsultasi Peluang Bisnis AFC')"
+                    class="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-6 sm:px-8 rounded-full shadow-lg transition transform hover:-translate-y-1 text-sm md:text-base w-full sm:w-auto cursor-pointer"
+                >
+                    <img src="wa-icon.png" alt="WhatsApp Icon" class="w-5 h-5 object-contain">
+                    <span>Chat WhatsApp Langsung</span>
+                </button>
+            </div>
         </div>
     </section>
 
@@ -322,7 +345,7 @@
     <div class="fixed bottom-6 right-6 z-50">
         <a 
             href="chat.html"
-            class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
+            class="bg-teal-500 hover:bg-teal-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition transform hover:scale-110 animate-bounce group focus:outline-none"
         >
             <span class="text-3xl leading-none">🤖</span>
         </a>
