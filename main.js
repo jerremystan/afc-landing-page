@@ -128,58 +128,7 @@ function kirimWA(topik) {
 }
 
 // ==========================================
-// 5. HELPER: TESTIMONI INSTAGRAM (DEBUG VERSION)
-// ==========================================
-async function loadInstagramThumbnails() {
-    const items = document.querySelectorAll('[data-instagram]');
-    console.log("🔍 Total elemen Instagram ditemukan:", items.length);
-
-    for (const item of items) {
-        const instagramUrl = item.getAttribute('data-instagram');
-        const image = item.querySelector('.instagram-thumbnail');
-        
-        if (!instagramUrl || !image) {
-            console.warn("⚠️ URL atau elemen gambar tidak lengkap pada item:", item);
-            continue;
-        }
-
-        try {
-            const apiUrl = 'https://api.microlink.io/?url=' + encodeURIComponent(instagramUrl) + '&meta=true';
-            console.log("🌐 Mencoba fetch URL:", apiUrl);
-            
-            const response = await fetch(apiUrl);
-            console.log("📡 Status response Microlink:", response.status);
-
-            if (!response.ok) {
-                throw new Error('HTTP error status: ' + response.status);
-            }
-
-            const result = await response.json();
-            console.log("📦 Data JSON diterima:", result);
-
-            let thumbnailUrl = null;
-            if (result && result.data && result.data.image && result.data.image.url) {
-                thumbnailUrl = result.data.image.url;
-            } else if (result && result.data && result.data.logo && result.data.logo.url) {
-                thumbnailUrl = result.data.logo.url;
-            }
-
-            if (thumbnailUrl) {
-                console.log("✅ Berhasil mendapatkan thumbnail:", thumbnailUrl);
-                image.src = thumbnailUrl;
-            } else {
-                console.warn("⚠️ Thumbnail tidak ditemukan di struktur JSON, menggunakan fallback logo.png");
-                image.src = 'logo.png';
-            }
-        } catch (error) {
-            console.error('❌ Gagal total mengambil thumbnail untuk URL:', instagramUrl, error);
-            image.src = 'logo.png';
-        }
-    }
-}
-
-// ==========================================
-// 6. HELPER: FAQ FILTERING
+// 5. HELPER: FAQ FILTERING
 // ==========================================
 function inisialisasiFilterFAQ() {
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -210,6 +159,98 @@ function inisialisasiFilterFAQ() {
             });
         });
     });
+}
+
+// ==========================================
+// 6. HELPER: TESTIMONI VIDEO FILTER & CSV LOADER
+// ==========================================
+function inisialisasiFilterVideoTestimoni() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const videoItems = document.querySelectorAll('.video-item');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const filterValue = btn.getAttribute('data-filter').toLowerCase();
+
+            // Ubah style tombol aktif
+            filterBtns.forEach(b => {
+                b.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'active-filter');
+                b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            });
+            btn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'active-filter');
+            btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+
+            // Tampilkan/Sembunyikan Video dengan animasi CSS
+            videoItems.forEach(item => {
+                const itemCategory = item.getAttribute('data-category') || '';
+                const tags = itemCategory.split(' ').map(tag => tag.trim().toLowerCase());
+                const shouldShow = filterValue === 'semua' || tags.includes(filterValue);
+
+                if (shouldShow) {
+                    item.classList.remove('hidden');
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        item.classList.add('hidden');
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+function loadTestimoniCSV() {
+    const videoGallery = document.getElementById('video-gallery');
+    if (videoGallery && typeof Papa !== 'undefined') {
+        Papa.parse("testimoni.csv", {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                const rows = results.data;
+                let htmlContent = "";
+                
+                rows.forEach(row => {
+                    htmlContent += `
+                        <a href="${row.url_reels}" target="_blank" rel="noopener noreferrer" class="video-item relative rounded-2xl overflow-hidden aspect-[9/16] cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-slate-200 block" data-category="${row.kategori_id}">
+                            <img src="${row.gambar_thumbnail}" alt="${row.judul_reels}" class="instagram-thumbnail w-full h-full object-cover" loading="lazy">
+                            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/50 flex items-center justify-center transition-all duration-300">
+                                <div class="w-14 h-14 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/50 group-hover:scale-110 transition-transform">
+                                    <svg class="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="absolute top-3 left-3">
+                                <span class="text-[10px] bg-gradient-to-r from-purple-600 to-pink-500 text-white px-2 py-1 rounded-full font-bold">
+                                    Instagram Reel
+                                </span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                                <span class="text-[10px] bg-${row.label_warna} px-2 py-0.5 rounded font-bold uppercase tracking-wider mb-1 inline-block">
+                                    ${row.label_nama}
+                                </span>
+                                <p class="text-sm font-semibold leading-tight line-clamp-2">
+                                    ${row.judul_reels}
+                                </p>
+                            </div>
+                        </a>
+                    `;
+                });
+                
+                videoGallery.innerHTML = htmlContent;
+                inisialisasiFilterVideoTestimoni();
+            },
+            error: function(err) {
+                videoGallery.innerHTML = `<div class="col-span-full text-center text-red-500 font-bold p-4">Gagal memuat data testimoni. Pastikan file "testimoni.csv" tersedia.</div>`;
+            }
+        });
+    }
 }
 
 // ==========================================
@@ -325,47 +366,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // E. Testimoni Video Filters & Instagram Thumbnails (testimoni.html)
-    const videoGallery = document.getElementById('video-gallery');
-    if (videoGallery) {
-        loadInstagramThumbnails();
-        
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const videoItems = document.querySelectorAll('.video-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filterValue = btn.getAttribute('data-filter').toLowerCase();
-
-                // Ubah style tombol aktif
-                filterBtns.forEach(b => {
-                    b.classList.remove('bg-blue-600', 'text-white', 'shadow-md', 'active-filter');
-                    b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
-                });
-                btn.classList.add('bg-blue-600', 'text-white', 'shadow-md', 'active-filter');
-                btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
-
-                // Tampilkan/Sembunyikan Video dengan animasi CSS
-                videoItems.forEach(item => {
-                    const itemCategory = item.getAttribute('data-category') || '';
-                    const tags = itemCategory.split(',').map(tag => tag.trim().toLowerCase());
-                    const shouldShow = filterValue === 'semua' || tags.includes(filterValue);
-
-                    if (shouldShow) {
-                        item.classList.remove('hidden');
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                            item.style.transform = 'scale(1)';
-                        }, 50);
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'scale(0.95)';
-                        setTimeout(() => {
-                            item.classList.add('hidden');
-                        }, 300); 
-                    }
-                });
-            });
-        });
-    }
+    // E. Load Testimoni Video dari CSV (testimoni.html)
+    loadTestimoniCSV();
 });
