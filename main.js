@@ -128,23 +128,36 @@ function kirimWA(topik) {
 }
 
 // ==========================================
-// 5. HELPER: TESTIMONI INSTAGRAM
+// 5. HELPER: TESTIMONI INSTAGRAM (DEBUG VERSION)
 // ==========================================
 async function loadInstagramThumbnails() {
     const items = document.querySelectorAll('[data-instagram]');
+    console.log("🔍 Total elemen Instagram ditemukan:", items.length);
+
     for (const item of items) {
         const instagramUrl = item.getAttribute('data-instagram');
         const image = item.querySelector('.instagram-thumbnail');
-        if (!instagramUrl || !image) continue;
+        
+        if (!instagramUrl || !image) {
+            console.warn("⚠️ URL atau elemen gambar tidak lengkap pada item:", item);
+            continue;
+        }
 
         try {
             const apiUrl = 'https://api.microlink.io/?url=' + encodeURIComponent(instagramUrl) + '&meta=true';
+            console.log("🌐 Mencoba fetch URL:", apiUrl);
+            
             const response = await fetch(apiUrl);
-            if (!response.ok) throw new Error('HTTP error ' + response.status);
+            console.log("📡 Status response Microlink:", response.status);
+
+            if (!response.ok) {
+                throw new Error('HTTP error status: ' + response.status);
+            }
 
             const result = await response.json();
-            let thumbnailUrl = null;
+            console.log("📦 Data JSON diterima:", result);
 
+            let thumbnailUrl = null;
             if (result && result.data && result.data.image && result.data.image.url) {
                 thumbnailUrl = result.data.image.url;
             } else if (result && result.data && result.data.logo && result.data.logo.url) {
@@ -152,12 +165,14 @@ async function loadInstagramThumbnails() {
             }
 
             if (thumbnailUrl) {
+                console.log("✅ Berhasil mendapatkan thumbnail:", thumbnailUrl);
                 image.src = thumbnailUrl;
             } else {
+                console.warn("⚠️ Thumbnail tidak ditemukan di struktur JSON, menggunakan fallback logo.png");
                 image.src = 'logo.png';
             }
         } catch (error) {
-            console.error('Gagal mengambil thumbnail Instagram:', instagramUrl, error);
+            console.error('❌ Gagal total mengambil thumbnail untuk URL:', instagramUrl, error);
             image.src = 'logo.png';
         }
     }
@@ -302,7 +317,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     `;
                 });
                 faqContainer.innerHTML = htmlContent;
-                inisialisasiFilterFAQ(); // Setup filter setelah data selesai dimuat
+                inisialisasiFilterFAQ(); 
             },
             error: function(err) {
                 faqContainer.innerHTML = `<div class="text-center text-red-500 font-bold p-4">Gagal memuat pertanyaan. Pastikan file "pertanyaan.csv" tersedia.</div>`;
@@ -347,7 +362,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         item.style.transform = 'scale(0.95)';
                         setTimeout(() => {
                             item.classList.add('hidden');
-                        }, 300); // Waktu animasi (harus sesuai dengan transisi di css)
+                        }, 300); 
                     }
                 });
             });
