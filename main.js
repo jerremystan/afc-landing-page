@@ -120,8 +120,8 @@ function kirimWA(topik) {
 
     const params = new URLSearchParams(window.location.search);
     const utmSource = params.get('utm_source') || 'Google Ads FAQ';
-    const nomorWA = "6287828412340"; 
-    const pesan = `Halo, saya baru membaca Halaman FAQ dan ingin konsultasi soal ${topik}. (Sumber: ${utmSource})`;
+    const nomorWA = "6285187721970"; 
+    const pesan = `Halo, saya baru membaca dan ingin konsultasi soal ${topik}. (Sumber: ${utmSource})`;
     const finalUrl = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
     
     window.open(finalUrl, '_blank');
