@@ -77,14 +77,31 @@
             </div>
 
             <!-- Dropdown Menu Mobile -->
-            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-64 max-h-[75vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 transition-all z-50 origin-top-right">
+            <div id="mobile-menu" class="hidden absolute top-full right-4 mt-2 w-64 max-h-[75vh] overflow-y-auto bg-white rounded-2xl shadow-2xl border border-slate-200 p-3 transition-all duration-300 z-50 origin-top-right">
                 <div class="flex flex-col space-y-2">
-                    <a href="index.html" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-sm transition">🏠 Beranda</a>
-                    <a href="index.html#produk-satuan-section" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-sm transition">📦 Paket Satuan</a>
-                    <a href="index.html#paket-member-section" class="block bg-blue-50 hover:bg-blue-100 text-blue-900 font-semibold px-4 py-3 rounded-xl text-sm transition">⭐ Paket Member</a>
-                    <a href="testimoni.html" class="block bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-semibold px-4 py-3 rounded-xl text-sm transition">💬 Testimoni</a>
-                    <a href="bisnis.html" class="block bg-amber-50 hover:bg-amber-100 text-amber-900 font-semibold px-4 py-3 rounded-xl text-sm transition">💼 Peluang Bisnis</a>
-                    <a href="pertanyaan.html" class="block bg-purple-50 hover:bg-purple-100 text-purple-900 font-semibold px-4 py-3 rounded-xl text-sm transition">❓ FAQ</a>
+                    <a href="index.html" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm">
+                        🏠 Beranda
+                    </a>
+                    <a href="index.html#produk-satuan-section" class="block bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        📦 Paket Satuan
+                    </a>
+                    <a href="index.html#paket-member-section" class="block bg-blue-50 hover:bg-blue-100 text-blue-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        ⭐ Paket Member
+                    </a>
+                    <a href="testimoni.html" class="block bg-emerald-50 hover:bg-emerald-100 text-emerald-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        💬 Testimoni
+                    </a>
+                    <!-- Peluang Bisnis disamakan jadi soft background amber -->
+                    <a href="bisnis.html" class="block bg-amber-50 hover:bg-amber-100 text-amber-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        💼 Peluang Bisnis
+                    </a>
+                    <a href="pertanyaan.html" class="block bg-purple-50 hover:bg-purple-100 text-purple-900 font-semibold px-4 py-3 rounded-xl text-left text-sm transition">
+                        ❓ FAQ
+                    </a>
+                    <!-- Menu Hubungi JEMY (VA) -->
+                    <a href="chat.html" class="block bg-teal-600 hover:bg-teal-700 text-white font-semibold px-4 py-3 rounded-xl text-left text-sm transition shadow-sm flex items-center gap-2">
+                        <span>🤖</span> Hubungi JEMY (VA)
+                    </a>
                 </div>
             </div>
         </div>
@@ -112,7 +129,8 @@
 
     <!-- LOGIKA JAVASCRIPT -->
     <script>
-        const API_URL = "https://api.afc-lifescience.store/api/chat";
+        //const API_URL = "https://api.afc-lifescience.store/api/chat";
+        const API_URL = "http://localhost:3000/api/chat";
         
         let sessionId = localStorage.getItem("jemy_phone");
         let userName = localStorage.getItem("jemy_name");
@@ -273,6 +291,24 @@
                 location.reload(); // Refresh halaman agar pop up form muncul lagi
             }
         }
+
+        // Script untuk menutup mobile menu dan mereset ikon saat diklik di luar area
+        window.addEventListener('click', function(e) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('menu-btn');
+            
+            if (mobileMenu && menuBtn) {
+                const isClickInsideMenu = mobileMenu.contains(e.target);
+                const isClickOnBtn = menuBtn.contains(e.target);
+                
+                if (!isClickInsideMenu && !isClickOnBtn && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    // Reset ikon hamburger kembali ke garis 3
+                    document.getElementById('icon-open').classList.remove('hidden');
+                    document.getElementById('icon-close').classList.add('hidden');
+                }
+            }
+        });
     </script>
 </body>
 </html>
